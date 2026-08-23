@@ -26,12 +26,12 @@
   <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjEyIiBmaWxsPSIjMGQwOTEyIi8+CjxwYXRoIGQ9Ik0zMiA3IDU3IDMyIDMyIDU3IDcgMzJaIiBmaWxsPSJub25lIiBzdHJva2U9IiNkOGI2NmIiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSIzMiIgeT0iMzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSIjZjBkNjk2Ij5MRjwvdGV4dD4KPC9zdmc+" type="image/svg+xml">
   <style>
 :root {
-  --bg: #08070b;
-  --bg2: #100b15;
+  --bg: #0d0a12;
+  --bg2: #17101f;
   --panel: rgba(20, 14, 26, .82);
   --panel2: rgba(12, 9, 17, .92);
   --ink: #f3efe7;
-  --muted: #bcb3c4;
+  --muted: #c9c0ce;
   --gold: #d8b66b;
   --gold2: #f0d696;
   --violet: #8c4cff;
@@ -50,7 +50,7 @@ body {
   background:
     radial-gradient(circle at 75% 12%, rgba(96,39,153,.18), transparent 28rem),
     radial-gradient(circle at 20% 38%, rgba(79,32,116,.12), transparent 25rem),
-    linear-gradient(180deg, #070609 0%, #0b0810 45%, #060508 100%);
+    linear-gradient(180deg, #0b0810 0%, #130d19 45%, #09070d 100%);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.62;
   overflow-x: hidden;
@@ -75,7 +75,7 @@ img { max-width: 100%; display:block; }
   width: 55rem;
   height: 55rem;
   filter: blur(90px);
-  opacity:.12;
+  opacity:.22;
   border-radius:50%;
   background:#7a32d2;
 }
@@ -264,7 +264,7 @@ main { position:relative; }
   gap:27px;
   padding:24px;
   border-radius:var(--radius);
-  background:linear-gradient(145deg, rgba(25,17,31,.95), rgba(12,9,17,.96));
+  background:linear-gradient(145deg, rgba(31,21,39,.95), rgba(17,12,23,.96));
   border:1px solid rgba(216,182,107,.14);
   box-shadow:0 18px 60px rgba(0,0,0,.25);
   overflow:hidden;
@@ -323,7 +323,7 @@ main { position:relative; }
 .about-panel, .quote-card {
   padding:48px;
   border-radius:var(--radius);
-  background:var(--panel);
+  background:rgba(27,18,35,.86);
   border:1px solid rgba(216,182,107,.14);
 }
 .quote-card {
@@ -453,6 +453,250 @@ footer p { margin:6px 0; font-size:13px; }
     "knowsAbout": ["Fantasy fiction", "Mystery fiction", "Supernatural fiction"]
   }
   </script>
+
+<style id="lfenra-animated-preview">
+/* ===== L. Fenra animated preview ===== */
+:root {
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+}
+
+/* Ambient animated light behind the whole page */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 25%, rgba(145,76,220,.20), transparent 27%),
+    radial-gradient(circle at 76% 16%, rgba(235,194,105,.10), transparent 24%),
+    radial-gradient(circle at 68% 72%, rgba(132,59,205,.18), transparent 30%);
+  filter: blur(26px);
+  animation: ambientAurora 18s ease-in-out infinite alternate;
+}
+
+@keyframes ambientAurora {
+  0%   { transform: translate3d(-1.5%, -1%, 0) scale(1); opacity: .70; }
+  50%  { transform: translate3d(1.5%, 1.2%, 0) scale(1.035); opacity: .95; }
+  100% { transform: translate3d(-.5%, 2%, 0) scale(1.015); opacity: .76; }
+}
+
+/* Existing background mist now moves slowly */
+.mist {
+  filter: blur(72px);
+  mix-blend-mode: screen;
+}
+.mist-one {
+  opacity: .28;
+  width: 68rem;
+  height: 68rem;
+  animation: mistDriftOne 18s ease-in-out infinite alternate;
+}
+.mist-two {
+  opacity: .22;
+  width: 64rem;
+  height: 64rem;
+  animation: mistDriftTwo 23s ease-in-out infinite alternate;
+}
+@keyframes mistDriftOne {
+  0%   { transform: translate3d(0,0,0) scale(.98); }
+  35%  { transform: translate3d(-95px,35px,0) scale(1.08); }
+  70%  { transform: translate3d(-175px,100px,0) scale(1.18); }
+  100% { transform: translate3d(-235px,145px,0) scale(1.10); }
+}
+@keyframes mistDriftTwo {
+  0%   { transform: translate3d(0,0,0) scale(.95); }
+  35%  { transform: translate3d(110px,-65px,0) scale(1.07); }
+  70%  { transform: translate3d(195px,-110px,0) scale(1.14); }
+  100% { transform: translate3d(270px,-150px,0) scale(1.05); }
+}
+
+/* A second layer of thin rolling mist gives visible motion on large monitors */
+body .mist-one::after,
+body .mist-two::after {
+  content:"";
+  position:absolute;
+  inset:16%;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(184,124,255,.22) 0%, rgba(113,54,181,.10) 42%, transparent 72%);
+  filter:blur(40px);
+}
+body .mist-one::after {
+  animation: innerMistOne 12s ease-in-out infinite alternate;
+}
+body .mist-two::after {
+  animation: innerMistTwo 15s ease-in-out infinite alternate;
+}
+@keyframes innerMistOne {
+  from { transform:translate3d(-40px, 20px, 0) scale(.85); opacity:.55; }
+  to   { transform:translate3d(95px,-55px,0) scale(1.22); opacity:1; }
+}
+@keyframes innerMistTwo {
+  from { transform:translate3d(55px,-15px,0) scale(.92); opacity:.5; }
+  to   { transform:translate3d(-110px,70px,0) scale(1.18); opacity:.9; }
+}
+
+/* Magical dust */
+.magic-particle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(244,215,151,.95) 0 22%, rgba(178,117,255,.72) 45%, transparent 72%);
+  filter: blur(.15px);
+  box-shadow: 0 0 12px rgba(177,111,255,.38);
+  animation: particleRise var(--duration) linear var(--delay) infinite;
+}
+@keyframes particleRise {
+  0%   { transform: translate3d(var(--x), 108vh, 0) scale(.45); opacity: 0; }
+  10%  { opacity: var(--opacity); }
+  58%  { transform: translate3d(calc(var(--x) + var(--drift)), 46vh, 0) scale(1); opacity: calc(var(--opacity) * .85); }
+  100% { transform: translate3d(calc(var(--x) - var(--drift)), -12vh, 0) scale(.55); opacity: 0; }
+}
+
+/* Hero depth + breathing violet/gold aura */
+.hero-copy {
+  transform: translate3d(calc(var(--mouse-x) * -0.018), calc(var(--mouse-y) * -0.018), 0);
+  transition: transform .25s ease-out;
+}
+.hero-cover-wrap {
+  transform: translate3d(calc(var(--mouse-x) * 0.032), calc(var(--mouse-y) * 0.032), 0);
+  transition: transform .25s ease-out;
+}
+.violet-halo {
+  animation: haloBreath 5.2s ease-in-out infinite;
+}
+@keyframes haloBreath {
+  0%,100% { opacity:.62; transform:scale(.94); filter:blur(28px); }
+  50%     { opacity:1; transform:scale(1.08); filter:blur(38px); }
+}
+.hero-cover {
+  animation: coverFloat 7s ease-in-out infinite;
+  will-change: transform, filter;
+  filter: drop-shadow(0 0 0 rgba(188,127,255,0));
+}
+@keyframes coverFloat {
+  0%,100% {
+    transform: rotate(1.2deg) translateY(0);
+    filter: drop-shadow(0 0 4px rgba(188,127,255,.10));
+  }
+  50% {
+    transform: rotate(.5deg) translateY(-10px);
+    filter: drop-shadow(0 0 18px rgba(188,127,255,.23));
+  }
+}
+
+/* Slow shine through the gold heading */
+.hero h1 span,
+.book-info h3,
+.section h2 {
+  background-image: linear-gradient(100deg, currentColor 0%, currentColor 40%, #fff0ba 50%, currentColor 60%, currentColor 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: goldShimmer 11s ease-in-out infinite;
+}
+@keyframes goldShimmer {
+  0%,72%,100% { background-position: 100% 0; }
+  86% { background-position: 0 0; }
+}
+
+/* Book cards lift very gently, with a magic edge glow */
+.book-card {
+  transition: transform .35s cubic-bezier(.2,.75,.25,1), border-color .35s ease, box-shadow .35s ease;
+  transform-style: preserve-3d;
+}
+.book-card:hover {
+  transform: translateY(-7px) scale(1.008);
+  border-color: rgba(216,182,107,.42);
+  box-shadow:
+    0 24px 72px rgba(0,0,0,.36),
+    0 0 28px rgba(129,65,195,.11);
+}
+.book-card img {
+  transition: transform .42s ease, box-shadow .42s ease, filter .42s ease;
+}
+.book-card:hover img {
+  transform: translateY(-3px) rotate(-.35deg);
+  box-shadow: 0 19px 46px rgba(0,0,0,.55);
+  filter: saturate(1.05) brightness(1.025);
+}
+
+/* Buttons get a very restrained travelling gleam */
+.button-primary {
+  position: relative;
+  overflow: hidden;
+}
+.button-primary::after {
+  content:"";
+  position:absolute;
+  inset:-60% auto -60% -45%;
+  width:34%;
+  transform:rotate(20deg);
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.52), transparent);
+  animation: buttonGleam 7.5s ease-in-out infinite;
+}
+@keyframes buttonGleam {
+  0%,68% { left:-45%; opacity:0; }
+  72% { opacity:.9; }
+  82% { left:125%; opacity:0; }
+  100% { left:125%; opacity:0; }
+}
+
+/* Reveal sections as they enter the viewport */
+.reveal-motion {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1);
+}
+.reveal-motion.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tiny glow in the sticky header while scrolling */
+.site-header {
+  transition: box-shadow .35s ease, background .35s ease;
+}
+.site-header.scrolled {
+  box-shadow: 0 10px 35px rgba(0,0,0,.28), 0 1px 0 rgba(216,182,107,.08);
+  background: rgba(8,7,11,.91);
+}
+
+/* Keep movement tasteful on mobile */
+@media (max-width: 760px) {
+  .hero-copy,
+  .hero-cover-wrap {
+    transform: none !important;
+  }
+  @keyframes coverFloat {
+    0%,100% { transform:translateY(0); }
+    50% { transform:translateY(-6px); }
+  }
+  .magic-particle:nth-child(2n) { display:none; }
+}
+
+/* Respect OS/browser reduced-motion accessibility preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+  .magic-particle { display:none !important; }
+  .reveal-motion { opacity:1 !important; transform:none !important; }
+}
+</style>
+
 </head>
 <body>
   <div class="mist mist-one"></div>
@@ -528,9 +772,9 @@ footer p { margin:6px 0; font-size:13px; }
               It remembers the choices history threw away.
             </p>
             <div class="book-actions">
-              <a class="button button-primary amazon-link" data-book="relic" href="#" aria-disabled="true">Amazon link coming soon</a>
+              <a class="button button-primary amazon-link" data-book="relic" href="https://www.amazon.co.uk/dp/B0HFDV35FQ" target="_blank" rel="noopener">Discover and Buy</a>
             </div>
-            <p class="status" data-status="relic">Amazon release pending</p>
+            <p class="status" data-status="relic">Available now on Kindle &amp; Kindle Unlimited</p>
           </div>
         </article>
 
@@ -623,7 +867,7 @@ footer p { margin:6px 0; font-size:13px; }
         <article class="news-card">
           <span class="news-tag">BOOK ONE</span>
           <h3>The Relic That Refused to Die</h3>
-          <p>The first Prima Volta novel is being prepared for its Amazon Kindle release.</p>
+          <p>The first Prima Volta novel is now available on Amazon Kindle and Kindle Unlimited.</p>
         </article>
         <article class="news-card">
           <span class="news-tag">NEXT CASE</span>
@@ -644,7 +888,7 @@ footer p { margin:6px 0; font-size:13px; }
         <h2>Enter Prima Volta's world</h2>
         <p>Begin with <em>The Relic That Refused to Die</em>.</p>
       </div>
-      <a class="button button-primary amazon-link" data-book="relic" href="#" aria-disabled="true">Amazon link coming soon</a>
+      <a class="button button-primary amazon-link" data-book="relic" href="https://www.amazon.co.uk/dp/B0HFDV35FQ" target="_blank" rel="noopener">Discover and Buy</a>
     </section>
   </main>
 
@@ -666,8 +910,8 @@ footer p { margin:6px 0; font-size:13px; }
   amazonStoreName: "Amazon UK",
   books: {
     relic: {
-      amazonUrl: "",
-      status: "Amazon release pending"
+      amazonUrl: "https://www.amazon.co.uk/dp/B0HFDV35FQ",
+      status: "Available now on Kindle & Kindle Unlimited"
     },
     masque: {
       amazonUrl: "",
@@ -709,7 +953,7 @@ footer p { margin:6px 0; font-size:13px; }
       link.removeAttribute("aria-disabled");
       link.target = "_blank";
       link.rel = "noopener";
-      link.textContent = key === "relic" ? "Buy on Amazon" : "View on Amazon";
+      link.textContent = key === "relic" ? "Discover and Buy" : "View on Amazon";
     } else {
       link.addEventListener("click", e => e.preventDefault());
     }
@@ -724,5 +968,77 @@ footer p { margin:6px 0; font-size:13px; }
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
 </script>
+
+<script id="lfenra-animation-script">
+(() => {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Scroll reveals */
+  const revealTargets = document.querySelectorAll(
+    '.section-heading, .book-card, .about-panel, .quote-card, .news-card, .cta'
+  );
+  revealTargets.forEach(el => el.classList.add('reveal-motion'));
+
+  if (!reduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -5% 0px' });
+    revealTargets.forEach(el => io.observe(el));
+  } else {
+    revealTargets.forEach(el => el.classList.add('visible'));
+  }
+
+  /* Hero parallax: desktop/mouse only */
+  if (!reduced && window.matchMedia('(pointer:fine)').matches) {
+    const root = document.documentElement;
+    window.addEventListener('mousemove', e => {
+      const x = (e.clientX / innerWidth - .5) * 28;
+      const y = (e.clientY / innerHeight - .5) * 22;
+      root.style.setProperty('--mouse-x', `${x}px`);
+      root.style.setProperty('--mouse-y', `${y}px`);
+    }, { passive:true });
+    document.addEventListener('mouseleave', () => {
+      root.style.setProperty('--mouse-x', '0px');
+      root.style.setProperty('--mouse-y', '0px');
+    });
+  }
+
+  /* Ambient gold/violet dust. Generated once; animation handled by CSS. */
+  if (!reduced) {
+    const frag = document.createDocumentFragment();
+    const count = innerWidth < 760 ? 15 : 28;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('i');
+      p.className = 'magic-particle';
+      const x = Math.round(Math.random() * 100);
+      const size = (1.8 + Math.random() * 3.8).toFixed(1);
+      const duration = (16 + Math.random() * 18).toFixed(1);
+      const delay = (-Math.random() * 28).toFixed(1);
+      const drift = (-65 + Math.random() * 130).toFixed(0);
+      const opacity = (.18 + Math.random() * .34).toFixed(2);
+      p.style.setProperty('--x', `${x}vw`);
+      p.style.setProperty('--size', `${size}px`);
+      p.style.setProperty('--duration', `${duration}s`);
+      p.style.setProperty('--delay', `${delay}s`);
+      p.style.setProperty('--drift', `${drift}px`);
+      p.style.setProperty('--opacity', opacity);
+      frag.appendChild(p);
+    }
+    document.body.appendChild(frag);
+  }
+
+  /* Header state */
+  const header = document.querySelector('.site-header');
+  const updateHeader = () => header && header.classList.toggle('scrolled', scrollY > 18);
+  updateHeader();
+  addEventListener('scroll', updateHeader, { passive:true });
+})();
+</script>
+
 </body>
 </html>

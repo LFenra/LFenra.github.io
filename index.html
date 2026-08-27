@@ -797,9 +797,9 @@ body .mist-two::after {
               It remembers the choices history threw away.
             </p>
 <div class="book-actions">
-<a aria-disabled="true" class="button button-primary amazon-link" data-book="relic" href="#">Amazon link coming soon</a>
+<a class="button button-primary amazon-link" data-book="relic" href="https://www.amazon.co.uk/s?k=Prima+Volta+and+the+Relic+That+Refused+to+Die+L.+Fenra&amp;i=digital-text" rel="noopener noreferrer" target="_blank">Buy on Amazon UK</a>
 </div>
-<p class="status" data-status="relic">Amazon release pending</p>
+<p class="status" data-status="relic">Available now on Amazon UK</p>
 </div>
 </article>
 <article class="book-card">
@@ -814,9 +814,9 @@ body .mist-two::after {
               somebody else makes the decisions.
             </p>
 <div class="book-actions">
-<a class="button button-secondary amazon-link" data-book="masque" href="https://www.amazon.co.uk/s?k=Prima+Volta+and+the+Masque+of+the+Empty+King+L.+Fenra&amp;i=digital-text" rel="noopener noreferrer" target="_blank">Pre-order on Amazon UK</a>
+<a class="button button-secondary amazon-link" data-book="masque" href="https://www.amazon.co.uk/dp/B0HGRLVGKB" rel="noopener noreferrer" target="_blank">Pre-order on Amazon UK</a>
 </div>
-<p class="status" data-status="masque">Pre-orders live · Releases 22 September 2026</p>
+<p class="status" data-status="masque">Pre-order live · Releases 22 September 2026</p>
 </div>
 </article>
 <article class="book-card">
@@ -884,19 +884,19 @@ body .mist-two::after {
 <article class="news-card">
 <span class="news-tag">BOOK ONE</span>
 <h3>The Relic That Refused to Die</h3>
-<p>Pre-orders are now live for Book Two. Prima Volta and the Masque of the Empty King releases 22 September 2026 on Amazon Kindle.</p>
+<p>Book One is available now on Amazon Kindle. Begin Detective Prima Volta's first impossible investigation.</p>
 </article>
 <article class="news-card">
 <span class="news-tag">NEXT CASE</span>
 <h3>The Masque of the Empty King</h3>
-<p>Book Two is being prepared for Amazon, continuing Prima's investigations into crimes that do not behave like ordinary crimes.</p>
+<p>Pre-orders are now live for Book Two. Prima Volta and the Masque of the Empty King releases 22 September 2026 on Amazon Kindle.</p>
 </article>
 <article class="news-card">
 <span class="news-tag">SERIES</span>
 <h3>More Prima Volta</h3>
 <p>Four Prima Volta mysteries are planned for the current series, with additional L. Fenra worlds able to join this site later.</p>
 </article>
-<a class="button button-secondary" href="https://www.amazon.co.uk/s?k=Prima+Volta+and+the+Masque+of+the+Empty+King+L.+Fenra&amp;i=digital-text" rel="noopener noreferrer" target="_blank">Pre-order Book Two</a></div>
+<a class="button button-secondary" href="https://www.amazon.co.uk/dp/B0HGRLVGKB" rel="noopener noreferrer" target="_blank">Pre-order Book Two</a></div>
 </section>
 <section class="cta">
 <div>
@@ -904,7 +904,7 @@ body .mist-two::after {
 <h2>Enter Prima Volta's world</h2>
 <p>Begin with <em>The Relic That Refused to Die</em>.</p>
 </div>
-<a aria-disabled="true" class="button button-primary amazon-link" data-book="relic" href="#">Amazon link coming soon</a>
+<a class="button button-primary amazon-link" data-book="relic" href="https://www.amazon.co.uk/s?k=Prima+Volta+and+the+Relic+That+Refused+to+Die+L.+Fenra&amp;i=digital-text" rel="noopener noreferrer" target="_blank">Buy Book One on Amazon UK</a>
 </section>
 </main>
 <footer>
@@ -924,12 +924,12 @@ body .mist-two::after {
   amazonStoreName: "Amazon UK",
   books: {
     relic: {
-      amazonUrl: "",
-      status: "Amazon release pending"
+      amazonUrl: "https://www.amazon.co.uk/s?k=Prima+Volta+and+the+Relic+That+Refused+to+Die+L.+Fenra&i=digital-text",
+      status: "Available now on Amazon UK"
     },
     masque: {
-      amazonUrl: "",
-      status: "Coming soon"
+      amazonUrl: "https://www.amazon.co.uk/dp/B0HGRLVGKB",
+      status: "Pre-order live · Releases 22 September 2026"
     },
     veilborn: {
       amazonUrl: "",
@@ -967,7 +967,13 @@ body .mist-two::after {
       link.removeAttribute("aria-disabled");
       link.target = "_blank";
       link.rel = "noopener";
-      link.textContent = key === "relic" ? "Buy on Amazon" : "View on Amazon";
+      if (key === "relic") {
+        link.textContent = "Buy on Amazon UK";
+      } else if (key === "masque") {
+        link.textContent = "Pre-order on Amazon UK";
+      } else {
+        link.textContent = "View on Amazon UK";
+      }
     } else {
       link.addEventListener("click", e => e.preventDefault());
     }

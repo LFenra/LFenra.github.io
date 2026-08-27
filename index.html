@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <html lang="en-GB">
+&lt;!-- LIVE LINKS FIX 2026-08-27: BOOK 1 LIVE, BOOK 2 PRE-ORDER LIVE --&gt;
+
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -896,7 +898,7 @@ body .mist-two::after {
 <h3>More Prima Volta</h3>
 <p>Four Prima Volta mysteries are planned for the current series, with additional L. Fenra worlds able to join this site later.</p>
 </article>
-<a class="button button-secondary" href="https://www.amazon.co.uk/dp/B0HGRLVGKB" rel="noopener noreferrer" target="_blank">Pre-order Book Two</a></div>
+</div>
 </section>
 <section class="cta">
 <div>
@@ -919,32 +921,8 @@ body .mist-two::after {
 </div>
 <p class="copyright">© <span id="year"></span> L. Fenra. All rights reserved.</p>
 </footer>
-<script>window.LFENRA_SITE = {
-  authorName: "L. Fenra",
-  amazonStoreName: "Amazon UK",
-  books: {
-    relic: {
-      amazonUrl: "https://www.amazon.co.uk/s?k=Prima+Volta+and+the+Relic+That+Refused+to+Die+L.+Fenra&i=digital-text",
-      status: "Available now on Amazon UK"
-    },
-    masque: {
-      amazonUrl: "https://www.amazon.co.uk/dp/B0HGRLVGKB",
-      status: "Pre-order live · Releases 22 September 2026"
-    },
-    veilborn: {
-      amazonUrl: "",
-      status: "Coming soon"
-    },
-    death: {
-      amazonUrl: "",
-      status: "Coming soon"
-    }
-  }
-};
-
-
+<script>
 (function () {
-  const cfg = window.LFENRA_SITE || { books: {} };
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".nav");
 
@@ -959,33 +937,8 @@ body .mist-two::after {
     }));
   }
 
-  document.querySelectorAll(".amazon-link").forEach(link => {
-    const key = link.dataset.book;
-    const book = cfg.books && cfg.books[key];
-    if (book && book.amazonUrl) {
-      link.href = book.amazonUrl;
-      link.removeAttribute("aria-disabled");
-      link.target = "_blank";
-      link.rel = "noopener";
-      if (key === "relic") {
-        link.textContent = "Buy on Amazon UK";
-      } else if (key === "masque") {
-        link.textContent = "Pre-order on Amazon UK";
-      } else {
-        link.textContent = "View on Amazon UK";
-      }
-    } else {
-      link.addEventListener("click", e => e.preventDefault());
-    }
-  });
-
-  document.querySelectorAll("[data-status]").forEach(node => {
-    const key = node.dataset.status;
-    const book = cfg.books && cfg.books[key];
-    if (book && book.status) node.textContent = book.status;
-  });
-
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 })();
 </script>
 <script id="lfenra-animation-script">

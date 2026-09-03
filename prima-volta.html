@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prima Volta | L. Fenra</title>
+<meta name="description" content="The Prima Volta fantasy mystery series by L. Fenra: impossible crimes, dangerous magic, ancient relics and dry humour.">
+<meta name="theme-color" content="#0d0912">
+<style>
+:root{--bg:#0d0a12;--panel:#1c1324;--ink:#f3efe7;--muted:#c9c0ce;--gold:#d8b66b;--gold2:#f0d696;--violet:#8c4cff;--violet2:#b88cff;--line:rgba(216,182,107,.22);--max:1180px;--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 75% 12%,rgba(96,39,153,.18),transparent 28rem),radial-gradient(circle at 20% 38%,rgba(79,32,116,.12),transparent 25rem),linear-gradient(180deg,#0b0810 0%,#130d19 45%,#09070d 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:42px 42px}a{color:inherit}
+.site-header{position:sticky;top:0;z-index:50;height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 max(22px,calc((100vw - var(--max))/2));background:rgba(8,7,11,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(216,182,107,.13)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(216,182,107,.6);transform:rotate(45deg);font-family:Georgia,serif;color:var(--gold2);font-size:12px}.brand-mark span{transform:rotate(-45deg)}.brand-name{font-family:Georgia,serif;letter-spacing:.18em;font-size:15px;color:var(--gold2)}
+.nav{display:flex;gap:25px}.nav a{text-decoration:none;color:#ddd5e0;font-size:14px}.nav a:hover,.nav a.current{color:var(--gold2)}
+.hero{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:92px 0 78px;display:grid;grid-template-columns:1.12fr .68fr;gap:68px;align-items:center}.eyebrow{color:var(--gold);font-size:12px;font-weight:900;letter-spacing:.22em;margin:0 0 15px}.hero h1,.section h2,.close h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;line-height:1.06;margin:0}.hero h1{font-size:clamp(48px,6vw,82px)}.hero h1 span{color:var(--gold2)}.hero-text{max-width:700px;color:var(--muted);font-size:clamp(17px,1.6vw,21px);margin:28px 0 32px}.buttons{display:flex;flex-wrap:wrap;gap:12px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:900;border:1px solid transparent;transition:.2s ease}.button.primary{color:#170e05;background:linear-gradient(135deg,#f0d696,#c99b45)}.button.secondary{color:#ece7ef;border-color:rgba(216,182,107,.28);background:rgba(216,182,107,.055)}.button:hover{transform:translateY(-2px)}
+.hero-notes{display:flex;flex-wrap:wrap;gap:17px;margin-top:28px;color:#958d9b;font-size:13px}.hero-notes span:before{content:"✦";color:var(--violet2);margin-right:7px}
+.sigil{width:min(78vw,330px);aspect-ratio:1;border-radius:50%;margin:auto;position:relative;border:1px solid rgba(216,182,107,.3);box-shadow:0 0 90px rgba(140,76,255,.2),inset 0 0 70px rgba(140,76,255,.08);display:grid;place-items:center}.sigil:before,.sigil:after{content:"";position:absolute;inset:14%;border:1px solid rgba(184,140,255,.35);transform:rotate(45deg)}.sigil:after{inset:29%;transform:rotate(0)}.sigil span{font:500 58px/1 Georgia,serif;color:var(--gold2);text-shadow:0 0 25px rgba(240,214,150,.25)}
+.band{padding:34px 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(66,30,86,.16),rgba(216,182,107,.035),rgba(66,30,86,.16));text-align:center}.band strong{font:italic clamp(22px,3vw,32px)/1.3 Georgia,serif}.band p{margin:7px 0 0;color:var(--muted)}
+.section{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:96px 0}.section-head{max-width:780px;margin-bottom:48px}.section h2,.close h2{font-size:clamp(36px,4.8vw,60px)}.section-head p:last-child{color:var(--muted);font-size:17px}
+.books{display:grid;grid-template-columns:1fr 1fr;gap:27px}.book{position:relative;display:grid;grid-template-columns:175px 1fr;gap:24px;padding:23px;border-radius:var(--radius);background:linear-gradient(145deg,rgba(31,21,39,.95),rgba(17,12,23,.96));border:1px solid rgba(216,182,107,.16);box-shadow:0 18px 60px rgba(0,0,0,.25)}.book.featured{border-color:rgba(216,182,107,.34)}.book-number{position:absolute;top:0;right:18px;padding:7px 11px;border-radius:0 0 8px 8px;color:#1b1006;background:var(--gold);font-size:10px;font-weight:900;letter-spacing:.14em}
+.cover-shell{position:relative;align-self:start;aspect-ratio:5/8;border-radius:9px;overflow:hidden;background:radial-gradient(circle at 50% 35%,rgba(140,76,255,.36),transparent 45%),linear-gradient(160deg,#24132f,#09070e);box-shadow:0 16px 42px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}.cover-shell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s ease}.cover-shell.loaded img{opacity:1}.cover-shell.loaded .cover-fallback{opacity:0;visibility:hidden;pointer-events:none}.cover-fallback{position:absolute;inset:0;padding:18px 13px;display:flex;flex-direction:column;justify-content:space-between;text-align:center}.cover-fallback small{font-size:9px;font-weight:900;letter-spacing:.15em;color:var(--gold)}.cover-fallback strong{font:500 18px/1.12 Georgia,serif;color:#f1e7f7}.cover-fallback span{font:600 10px/1.2 Georgia,serif;letter-spacing:.16em;color:var(--gold2)}
+.book-copy{padding:10px 0 5px}.book-copy h3{margin:0 0 10px;font:500 28px/1.08 Georgia,serif;color:var(--gold2)}.hook{margin:0 0 10px;color:#f1ecf4;font-weight:800}.desc{margin:0 0 19px;color:var(--muted);font-size:14px}.status{display:block;margin-top:12px;color:#9e93a5;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}.panel{padding:34px;border-radius:22px;background:rgba(24,16,31,.8);border:1px solid var(--line)}.panel p{color:var(--muted)}.quote{font:italic 28px/1.35 Georgia,serif;color:#efe6f4}.quote small{display:block;margin-top:14px;font:13px/1.4 Inter,sans-serif;color:var(--muted)}
+.close{width:min(var(--max),calc(100% - 44px));margin:10px auto 90px;padding:42px;border-radius:24px;background:linear-gradient(115deg,rgba(140,76,255,.13),rgba(216,182,107,.08));border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:28px}.close p{margin:8px 0 0;color:var(--muted)}
+footer{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:38px 0 46px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:25px;color:#958d9b;font-size:13px}.footer-links{display:flex;gap:18px}.footer-links a{text-decoration:none}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.sigil{display:none}.books{grid-template-columns:1fr}.book{grid-template-columns:180px 1fr}.about-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.nav{gap:13px}.nav a:nth-child(3){display:none}.hero,.section,.close,footer{width:min(100% - 30px,var(--max))}.book{grid-template-columns:115px 1fr;gap:16px;padding:18px}.book-copy h3{font-size:22px}.cover-fallback strong{font-size:13px}.close{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html"><span class="brand-mark"><span>LF</span></span><span class="brand-name">L. FENRA</span></a>
+<nav class="nav"><a href="index.html">Home</a><a class="current" href="prima-volta.html">Prima Volta</a><a href="kelp-redder.html">Kelp Redder</a><a href="#books">Books</a></nav>
+</header>
+<main>
+<section class="hero" id="home">
+<div>
+<p class="eyebrow">FANTASY MYSTERIES · IMPOSSIBLE CRIMES</p>
+<h1>Meet <span>Prima Volta</span></h1>
+<p class="hero-text">Detective Prima Volta works where ordinary crime, dangerous magic and inconvenient history overlap. The evidence is often impossible. Prima is usually more annoyed by the paperwork.</p>
+<div class="buttons"><a class="button primary" href="#books">Explore the four books</a><a class="button secondary" href="https://www.amazon.co.uk/dp/B0HFDV35FQ" target="_blank" rel="noopener">Start with Book One</a></div>
+<div class="hero-notes"><span>Fantasy mystery</span><span>Arcane investigation</span><span>Dry humour</span></div>
+</div>
+<div class="sigil" aria-hidden="true"><span>PV</span></div>
+</section>
+
+<section class="band"><strong>Cases that should not be possible.</strong><p>Each novel is a complete mystery while Prima's world and crew develop across the series.</p></section>
+
+<section class="section" id="books">
+<div class="section-head"><p class="eyebrow">THE PRIMA VOLTA SERIES</p><h2>Four investigations</h2><p>The actual book covers are restored below. The first three buttons use the current Amazon destinations; Book Four remains marked coming soon until its listing is live.</p></div>
+<div class="books">
+
+<article class="book featured">
+<div class="book-number">BOOK ONE</div>
+<div class="cover-shell" data-shell="relic"><img data-cover="relic" alt="Cover of Prima Volta and the Relic That Refused to Die"><div class="cover-fallback"><small>PRIMA VOLTA · BOOK ONE</small><strong>THE RELIC THAT REFUSED TO DIE</strong><span>L. FENRA</span></div></div>
+<div class="book-copy"><h3>The Relic That Refused to Die</h3><p class="hook">A dead archivist. A relic that remembers discarded outcomes. Evidence that refuses to stay settled.</p><p class="desc">When Elian Marr is found apparently dead inside a museum of dangerous magical artefacts, Prima discovers that the Veil Shard does not merely preserve history. It remembers the choices history threw away.</p><a class="button primary" href="https://www.amazon.co.uk/dp/B0HFDV35FQ" target="_blank" rel="noopener">Buy on Amazon UK</a><span class="status">Available now</span></div>
+</article>
+
+<article class="book">
+<div class="book-number">BOOK TWO</div>
+<div class="cover-shell" data-shell="masque"><img data-cover="masque" alt="Cover of Prima Volta and the Masque of the Empty King"><div class="cover-fallback"><small>PRIMA VOLTA · BOOK TWO</small><strong>THE MASQUE OF THE EMPTY KING</strong><span>L. FENRA</span></div></div>
+<div class="book-copy"><h3>The Masque of the Empty King</h3><p class="hook">People are committing crimes they cannot remember.</p><p class="desc">A dead language, stolen relics and a secret buried beneath an elven war lead Prima to an artefact capable of leaving a person recognisably themselves while somebody else makes the decisions.</p><a class="button primary" href="https://www.amazon.co.uk/dp/B0HGRLVGKB" target="_blank" rel="noopener">View on Amazon UK</a><span class="status">Available soon</span></div>
+</article>
+
+<article class="book">
+<div class="book-number">BOOK THREE</div>
+<div class="cover-shell" data-shell="veilborn"><img data-cover="veilborn" alt="Cover of Prima Volta and the Veilborn Paradox"><div class="cover-fallback"><small>PRIMA VOLTA · BOOK THREE</small><strong>THE VEILBORN PARADOX</strong><span>L. FENRA</span></div></div>
+<div class="book-copy"><h3>The Veilborn Paradox</h3><p class="hook">Most people leave a ghost after they die. Very occasionally, the ghost does not wait.</p><p class="desc">A series of impossible robberies leads Prima to a living man haunted by his own future ghost — and to the question of whether protection is still protection when it takes away a person's choices.</p><a class="button secondary" href="https://www.amazon.co.uk/s?k=Prima+Volta+and+the+Veilborn+Paradox+L.+Fenra&i=stripbooks" target="_blank" rel="noopener">Find on Amazon UK</a><span class="status">Prima Volta Book Three</span></div>
+</article>
+
+<article class="book">
+<div class="book-number">BOOK FOUR</div>
+<div class="cover-shell" data-shell="death"><img data-cover="death" alt="Cover of Prima Volta and the Death That Hadn't Happened Yet"><div class="cover-fallback"><small>PRIMA VOLTA · BOOK FOUR</small><strong>THE DEATH THAT HADN'T HAPPENED YET</strong><span>L. FENRA</span></div></div>
+<div class="book-copy"><h3>The Death That Hadn't Happened Yet</h3><p class="hook">His death certificate is genuine. The problem is that he is still alive.</p><p class="desc">A government record predicts a man's death three days in advance and names Prima as the investigator who will find his body. The paperwork may be more dangerous than the crime.</p><span class="button secondary" aria-disabled="true">Coming soon</span><span class="status">Prima Volta Book Four</span></div>
+</article>
+
+</div>
+</section>
+
+<section class="section" id="about"><div class="about-grid"><div class="panel"><p class="eyebrow">ABOUT THE SERIES</p><h2>Impossible evidence. Inconvenient magic.</h2><p>The Prima Volta novels combine supernatural investigation, dark fantasy, character-driven mystery and understated humour. Prima follows evidence even when the evidence would prefer not to behave.</p></div><aside class="panel"><div class="quote">“Magic does malfunction. People just do it more often.”<small>— Prima Volta</small></div></aside></div></section>
+
+<section class="close"><div><p class="eyebrow">ANOTHER L. FENRA WORLD</p><h2>Looking for something lighter?</h2><p>Visit Kelp Redder for funny magical adventures, goblins, technology and terrible plans.</p></div><a class="button secondary" href="kelp-redder.html">Visit Kelp Redder</a></section>
+</main>
+<footer><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="#books">Books</a><a href="kelp-redder.html">Kelp Redder</a></div></footer>
+
+<script>
+/*
+  The earlier Prima page stored the real four covers as embedded JPEG data.
+  This loader reuses those exact images from the site's immutable August 2026
+  Git history, so there are no extra image files for you to upload.
+*/
+(function(){
+  const source='https://raw.githubusercontent.com/LFenra/LFenra.github.io/78fdf85aea80baf8b4eb7867d41939a3bc296e85/index.html';
+  const titles={
+    relic:'Prima Volta and the Relic That Refused to Die',
+    masque:'Prima Volta and the Masque of the Empty King',
+    veilborn:'Prima Volta and the Veilborn Paradox',
+    death:"Prima Volta and the Death That Hadn't Happened Yet"
+  };
+  function apply(key,src){
+    const img=document.querySelector('[data-cover="'+key+'"]');
+    const shell=document.querySelector('[data-shell="'+key+'"]');
+    if(!img||!shell||!src) return;
+    img.addEventListener('load',()=>shell.classList.add('loaded'),{once:true});
+    img.src=src;
+  }
+  fetch(source,{cache:'force-cache'})
+    .then(r=>{if(!r.ok)throw new Error('cover source');return r.text();})
+    .then(html=>{
+      const doc=new DOMParser().parseFromString(html,'text/html');
+      Object.entries(titles).forEach(([key,title])=>{
+        const match=[...doc.querySelectorAll('img')].find(img=>{
+          const alt=img.getAttribute('alt')||'';
+          const src=img.getAttribute('src')||'';
+          return alt.includes(title)&&src.startsWith('data:image/');
+        });
+        if(match) apply(key,match.getAttribute('src'));
+      });
+    }).catch(()=>{});
+})();
+</script>
+</body>
+</html>

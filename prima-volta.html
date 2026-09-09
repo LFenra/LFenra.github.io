@@ -50,6 +50,29 @@ a{color:inherit}
 }
 
 /* A few living flecks, sitting inside the approved mist artwork. */
+
+.hero-brand-logo{
+  position:absolute;
+  z-index:10;
+  left:3.6%;
+  top:0.7%;
+  width:20.5%;
+  height:9.8%;
+  display:flex;
+  align-items:center;
+  padding:4px 7px;
+  background:linear-gradient(90deg,#050407 0%,#050407 82%,rgba(5,4,7,0) 100%);
+  text-decoration:none;
+}
+.hero-brand-logo img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:100%;
+  object-fit:contain;
+  object-position:left center;
+}
+
 .hero-stage::before{
   content:"";
   position:absolute;
@@ -505,6 +528,8 @@ footer{
 
   /* Keep the overlaid real covers and Buy Now buttons proportional
      to the artwork as the hero scales down. */
+  .hero-brand-logo{left:2.8%;top:.5%;width:23%;height:10.3%;padding:2px 4px}
+
   .buy-hit{
     font-size:clamp(6px,2.15vw,10px);
     letter-spacing:.025em;
@@ -579,6 +604,7 @@ footer{
 
 <section class="hero-wrap" aria-label="Prima Volta">
   <div class="hero-stage">
+<a class="hero-brand-logo" href="index.html" aria-label="L. Fenra home"><img src="site-logo.png" alt="L. Fenra"></a>
     <!-- Correct real covers replace the four covers baked into the approved preview. -->
     <div class="top-cover relic" data-shell="relic"><img data-cover="relic" alt="Cover of Prima Volta and the Relic That Refused to Die"><span class="top-cover-fallback">The Relic That Refused to Die</span></div>
     <div class="top-cover masque" data-shell="masque"><img data-cover="masque" alt="Cover of Prima Volta and the Masque of the Empty King"><span class="top-cover-fallback">The Masque of the Empty King</span></div>

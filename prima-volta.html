@@ -529,13 +529,23 @@ footer{
   .mobile-header.menu-open .nav{display:flex}
   .mobile-header .nav a{font-size:14px;text-decoration:none;color:#d7d2da}
   .mobile-header .nav a.current{color:var(--gold2)}
-  .mobile-hero{display:block;width:100%;overflow:hidden}
-  .mobile-hero img{display:block;width:100%;height:560px;object-fit:cover;object-position:center 22%}
+  .mobile-hero{display:block;position:relative;width:min(var(--max),calc(100% - 28px));margin:6px auto 0;min-height:640px;border-radius:28px;overflow:hidden;border:1px solid rgba(216,182,107,.16);background:radial-gradient(circle at 26% 34%,rgba(139,73,242,.45),transparent 26rem),radial-gradient(circle at 82% 24%,rgba(219,162,52,.28),transparent 22rem),linear-gradient(180deg,#100816,#08060b 74%,#060509 100%);box-shadow:0 28px 70px rgba(0,0,0,.42)}
+  .mobile-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(9,6,13,.06) 18%,rgba(9,6,13,.28) 48%,rgba(9,6,13,.92) 100%)}
+  .mobile-hero-character{position:absolute;right:-10%;top:4%;height:95%;width:auto;z-index:1;filter:drop-shadow(0 22px 35px rgba(0,0,0,.4))}
+  .mobile-hero-copy{position:relative;z-index:2;min-height:640px;padding:28px 24px 26px;display:flex;flex-direction:column;justify-content:flex-end}
+  .mobile-hero .eyebrow{margin:0 0 12px;color:var(--gold2);font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+  .mobile-hero h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(56px,17vw,86px);line-height:.92;font-weight:500}
+  .mobile-hero h1 span{display:block;color:var(--gold2)}
+  .mobile-hero .sub{margin:14px 0 0;color:#f1e8ef;font-family:Georgia,"Times New Roman",serif;font-size:clamp(20px,6vw,34px);line-height:1.08}
   .hero-wrap{display:none}
 }
 @media(max-width:430px){
   .mobile-header .menu-toggle{width:48px;height:48px;border-radius:13px}
-  .mobile-hero img{height:500px;object-position:center 20%}
+  .mobile-hero{min-height:600px;border-radius:24px}
+  .mobile-hero-character{right:-16%;top:6%;height:88%}
+  .mobile-hero-copy{min-height:600px;padding:24px 20px 22px}
+  .mobile-hero h1{font-size:clamp(48px,16vw,74px)}
+  .mobile-hero .sub{font-size:clamp(18px,5.8vw,28px)}
   /* Fit the complete dramatic Prima artwork to the phone screen.
      Do not force a desktop-sized crop. */
   .hero-wrap{
@@ -638,7 +648,12 @@ footer{
 </header>
 
 <div class="mobile-hero" aria-label="Prima Volta mobile banner">
-  <img src="prima-mobile-banner.webp" fetchpriority="high" alt="Meet Prima Volta. Impossible crimes. Dangerous magic.">
+  <img class="mobile-hero-character" src="landing-prima.webp" fetchpriority="high" alt="">
+  <div class="mobile-hero-copy">
+    <p class="eyebrow">FANTASY MYSTERIES</p>
+    <h1>Meet <span>Prima Volta</span></h1>
+    <p class="sub">Impossible crimes. Dangerous magic.</p>
+  </div>
 </div>
 
 <section class="hero-wrap" aria-label="Prima Volta">

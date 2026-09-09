@@ -118,15 +118,15 @@ a{color:inherit}
   display:block;
   background:transparent;
 }
-.nav-home{left:49.1%;top:1.5%;width:5.3%;height:7%}
-.nav-prima{left:54.2%;top:1.5%;width:7.5%;height:7%}
-.nav-kelp{left:62.0%;top:1.5%;width:8.7%;height:7%}
-.nav-books{left:70.8%;top:1.5%;width:5.5%;height:7%}
-.nav-about{left:76.2%;top:1.5%;width:5.7%;height:7%}
-.nav-contact{left:82.0%;top:1.5%;width:7.0%;height:7%}
+.nav-home{left:49.70%;top:2.75%;width:3.65%;height:3.6%}
+.nav-prima{left:54.70%;top:2.75%;width:6.65%;height:3.9%}
+.nav-kelp{left:62.70%;top:2.75%;width:7.05%;height:4.2%}
+.nav-books{left:70.95%;top:2.75%;width:3.80%;height:3.6%}
+.nav-about{left:76.00%;top:2.75%;width:3.85%;height:3.6%}
+.nav-contact{left:81.05%;top:2.75%;width:4.85%;height:3.6%}
 
-/* Functional Amazon areas exactly over the four gold buttons. */
-.amazon-hit{
+/* Functional purchase areas exactly over the four gold buttons. */
+.buy-hit{
   top:92.85%;
   height:5.65%;
   overflow:hidden;
@@ -150,21 +150,8 @@ a{color:inherit}
     inset 0 -1px 0 rgba(95,55,5,.55);
   text-shadow:0 1px 1px rgba(76,43,3,.65);
 }
-.amazon-hit::before{
-  content:"a";
-  display:grid;
-  place-items:center;
-  width:1.45em;
-  height:1.45em;
-  border-radius:50%;
-  background:rgba(255,255,255,.12);
-  color:#fff9ef;
-  font-family:Georgia,serif;
-  font-size:1.20em;
-  font-weight:700;
-  line-height:1;
-}
-.amazon-hit::after{
+.buy-hit::before{content:none;display:none}
+.buy-hit::after{
   content:"";
   position:absolute;
   top:-30%;
@@ -175,10 +162,10 @@ a{color:inherit}
   transform:skewX(-22deg);
   animation:buttonFlash 5.8s ease-in-out infinite;
 }
-.amazon1{left:13.25%;width:12.15%}
-.amazon2{left:30.23%;width:12.15%}
-.amazon3{left:48.42%;width:12.15%}
-.amazon4{left:66.15%;width:12.15%}
+.buy1{left:13.25%;width:12.15%}
+.buy2{left:30.23%;width:12.15%}
+.buy3{left:48.42%;width:12.15%}
+.buy4{left:66.15%;width:12.15%}
 @keyframes buttonFlash {
   0%,72%,100%{left:-60%;opacity:0}
   9%,18%{opacity:.9}
@@ -490,22 +477,103 @@ footer{
 .footer-links{display:flex;gap:18px;flex-wrap:wrap}
 .footer-links a{text-decoration:none}
 .footer-links a:hover{color:var(--gold2)}
+.status,.view-link{display:none!important}
 
 @media(max-width:900px){
   .detail-card{grid-template-columns:125px 1fr}
   .detail-action{grid-column:2;text-align:left}
 }
 @media(max-width:650px){
-  .hero-stage{min-width:650px;left:50%;transform:translateX(-50%)}
-  .hero-wrap{height:384px}
-  .transition-mist{height:150px}
-  .detail-card{grid-template-columns:95px 1fr;gap:16px;padding:16px}
-  .detail-copy h3{font-size:21px}
-  .detail-action{grid-column:1 / -1;text-align:left}
-  .gold-btn{min-width:160px}
+  /* Fit the complete dramatic Prima artwork to the phone screen.
+     Do not force a desktop-sized crop. */
+  .hero-wrap{
+    height:auto;
+    min-height:0;
+    overflow:hidden;
+  }
+  .hero-stage{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    left:auto;
+    transform:none;
+    margin:0 auto;
+    aspect-ratio:1327 / 783;
+    background-size:100% 100%;
+    background-position:center top;
+  }
+
+  /* Keep the overlaid real covers and Buy Now buttons proportional
+     to the artwork as the hero scales down. */
+  .buy-hit{
+    font-size:clamp(6px,2.15vw,10px);
+    letter-spacing:.025em;
+    gap:0;
+  }
+
+  .transition-mist{height:120px}
+  .detail-card{
+    grid-template-columns:95px minmax(0,1fr);
+    gap:16px;
+    padding:16px;
+  }
+  .detail-copy{
+    min-width:0;
+  }
+  .detail-copy h3{
+    font-size:21px;
+    overflow-wrap:anywhere;
+  }
+  .detail-copy p{
+    overflow-wrap:anywhere;
+  }
+  .detail-action{
+    grid-column:1 / -1;
+    text-align:left;
+  }
+  .gold-btn{
+    min-width:160px;
+  }
   footer{flex-direction:column}
 }
+
+@media(max-width:430px){
+  .hero-stage{
+    width:100vw;
+    max-width:100vw;
+  }
+  .transition-mist{
+    height:90px;
+  }
+  .detail-card{
+    grid-template-columns:82px minmax(0,1fr);
+    gap:13px;
+    padding:14px;
+  }
+  .detail-copy h3{
+    font-size:19px;
+    line-height:1.12;
+  }
+  .detail-copy .hook{
+    font-size:14px;
+  }
+  .detail-copy .desc{
+    font-size:14px;
+    line-height:1.48;
+  }
+  .gold-btn{
+    width:100%;
+    min-width:0;
+    max-width:320px;
+  }
+}
+
 </style>
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 
@@ -522,14 +590,14 @@ footer{
     <a class="hit nav-prima" href="prima-volta.html" aria-label="Prima Volta"></a>
     <a class="hit nav-kelp" href="kelp-redder.html" aria-label="Kelp Redder"></a>
     <a class="hit nav-books" href="#books" aria-label="Books"></a>
-    <a class="hit nav-about" href="#about" aria-label="About"></a>
+    <a class="hit nav-about" href="#prima-about" aria-label="About"></a>
     <a class="hit nav-contact" href="index.html#contact" aria-label="Contact"></a>
 
-    <!-- Clickable Amazon buttons with the subtle flash. -->
-    <a class="hit amazon-hit amazon1" href="https://www.amazon.co.uk/dp/B0HFDV35FQ" target="_blank" rel="noopener" aria-label="Book One on Amazon UK">Amazon UK</a>
-    <a class="hit amazon-hit amazon2" href="https://www.amazon.co.uk/dp/B0HGRLVGKB" target="_blank" rel="noopener" aria-label="Book Two on Amazon UK">Amazon UK</a>
-    <a class="hit amazon-hit amazon3" href="https://www.amazon.co.uk/dp/B0HGT291RD" target="_blank" rel="noopener" aria-label="Book Three on Amazon UK">Amazon UK</a>
-    <a class="hit amazon-hit amazon4" href="https://www.amazon.co.uk/dp/B0HHNL6GWD" target="_blank" rel="noopener" aria-label="Book Four on Amazon UK">Amazon UK</a>
+    <!-- Clickable Buy Now buttons with the subtle flash. -->
+    <a class="hit buy-hit buy1" href="https://mybook.to/4KHy4o6" target="_blank" rel="noopener" aria-label="Buy Book One">Buy Now</a>
+    <a class="hit buy-hit buy2" href="https://mybook.to/2BNxl" target="_blank" rel="noopener" aria-label="Buy Book Two">Buy Now</a>
+    <a class="hit buy-hit buy3" href="https://mybook.to/rjG3YV" target="_blank" rel="noopener" aria-label="Buy Book Three">Buy Now</a>
+    <a class="hit buy-hit buy4" href="https://mybook.to/R0a1B" target="_blank" rel="noopener" aria-label="Buy Book Four">Buy Now</a>
   </div>
 </section>
 
@@ -552,9 +620,7 @@ footer{
         <p class="desc">When Elian Marr is found apparently dead inside a museum of dangerous magical artefacts, Prima discovers that the Veil Shard does not merely preserve history. It remembers the choices history threw away.</p>
       </div>
       <div class="detail-action">
-        <span class="status">Available on Amazon UK</span>
-        <a class="gold-btn" href="https://www.amazon.co.uk/dp/B0HFDV35FQ" target="_blank" rel="noopener">Amazon UK</a>
-        <a class="view-link" href="https://www.amazon.co.uk/dp/B0HFDV35FQ" target="_blank" rel="noopener">View on Amazon ›</a>
+        <a class="gold-btn" href="https://mybook.to/4KHy4o6" target="_blank" rel="noopener">Buy Now</a>
       </div>
     </article>
 
@@ -566,9 +632,7 @@ footer{
         <p class="desc">A dead language, stolen relics and a secret buried beneath an elven war lead Prima to an artefact capable of leaving a person recognisably themselves while somebody else makes the decisions.</p>
       </div>
       <div class="detail-action">
-        <span class="status">Available on Amazon UK</span>
-        <a class="gold-btn" href="https://www.amazon.co.uk/dp/B0HGRLVGKB" target="_blank" rel="noopener">Amazon UK</a>
-        <a class="view-link" href="https://www.amazon.co.uk/dp/B0HGRLVGKB" target="_blank" rel="noopener">View on Amazon ›</a>
+        <a class="gold-btn" href="https://mybook.to/2BNxl" target="_blank" rel="noopener">Buy Now</a>
       </div>
     </article>
 
@@ -580,9 +644,7 @@ footer{
         <p class="desc">A series of impossible robberies leads Prima to a living man haunted by his own future ghost — and to the question of whether protection is still protection when it takes away a person's choices.</p>
       </div>
       <div class="detail-action">
-        <span class="status">Available on Amazon UK</span>
-        <a class="gold-btn" href="https://www.amazon.co.uk/dp/B0HGT291RD" target="_blank" rel="noopener">Amazon UK</a>
-        <a class="view-link" href="https://www.amazon.co.uk/dp/B0HGT291RD" target="_blank" rel="noopener">View on Amazon ›</a>
+        <a class="gold-btn" href="https://mybook.to/rjG3YV" target="_blank" rel="noopener">Buy Now</a>
       </div>
     </article>
 
@@ -594,14 +656,12 @@ footer{
         <p class="desc">A government record predicts a man's death three days in advance and names Prima as the investigator who will find his body. The paperwork may be more dangerous than the crime.</p>
       </div>
       <div class="detail-action">
-        <span class="status">Available on Amazon UK</span>
-        <a class="gold-btn" href="https://www.amazon.co.uk/dp/B0HHNL6GWD" target="_blank" rel="noopener">Amazon UK</a>
-        <a class="view-link" href="https://www.amazon.co.uk/dp/B0HHNL6GWD" target="_blank" rel="noopener">View on Amazon ›</a>
+        <a class="gold-btn" href="https://mybook.to/R0a1B" target="_blank" rel="noopener">Buy Now</a>
       </div>
     </article>
   </section>
 
-  <section class="about" id="about">
+  <section class="about" id="prima-about">
     <div class="ornament">✦</div>
     <h2>About L. Fenra</h2>
     <p>L. Fenra lives in Ayrshire, Scotland, with his wife, son and their dachshund, Milo. Before turning to writing, he worked as both a blacksmith and a joiner, two trades that taught him a fair bit about patience, problem-solving and making things from scratch.</p>
@@ -614,8 +674,10 @@ footer{
     <span>© 2026 L. Fenra</span>
     <div class="footer-links">
       <a href="index.html">Home</a>
-      <a href="#books">Books</a>
+      <a href="prima-volta.html">Prima Volta</a>
       <a href="kelp-redder.html">Kelp Redder</a>
+      <a href="#books">Books</a>
+      <a href="#prima-about">About</a>
       <a href="index.html#contact">Contact</a>
     </div>
   </footer>

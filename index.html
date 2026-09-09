@@ -12,14 +12,216 @@
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:40px 40px}
 a{color:inherit}.header{height:76px;display:flex;align-items:center;justify-content:space-between;width:min(var(--max),calc(100% - 44px));margin:auto}.brand{text-decoration:none;display:flex;align-items:center;gap:13px;font-family:Georgia,serif;letter-spacing:.16em;color:var(--gold)}.mark{width:40px;height:40px;border:1px solid rgba(226,196,119,.55);display:grid;place-items:center;transform:rotate(45deg)}.mark span{transform:rotate(-45deg);font-size:12px}.nav{display:flex;gap:22px}.nav a{text-decoration:none;color:#d7d2da;font-size:14px}.nav a:hover,.nav a.current{color:white}.nav a.current{color:var(--gold)}
 .hero{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:72px 0 42px;text-align:center}.eyebrow{margin:0 0 15px;font-size:12px;font-weight:900;letter-spacing:.22em;color:var(--gold)}h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(48px,7vw,88px);line-height:.98;margin:0}.intro{max-width:760px;margin:24px auto 0;color:var(--muted);font-size:18px}
-.worlds{width:min(var(--max),calc(100% - 44px));margin:38px auto 90px;display:grid;grid-template-columns:1fr 1fr;gap:26px}.world{position:relative;min-height:520px;padding:46px;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 80px rgba(0,0,0,.38);display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;transition:.25s ease}.world:hover{transform:translateY(-7px)}.world:before{content:"";position:absolute;inset:0;opacity:.9}.world>*{position:relative;z-index:1}.prima{background:linear-gradient(145deg,#160d20,#0b080f)}.prima:before{background:radial-gradient(circle at 70% 18%,rgba(155,92,255,.42),transparent 23rem),radial-gradient(circle at 20% 80%,rgba(226,196,119,.13),transparent 20rem)}.kelp{background:linear-gradient(145deg,#071a28,#071018)}.kelp:before{background:radial-gradient(circle at 72% 15%,rgba(53,185,255,.42),transparent 23rem),radial-gradient(circle at 20% 80%,rgba(255,211,78,.14),transparent 20rem)}
-.world-label{font-size:11px;font-weight:900;letter-spacing:.18em;margin-bottom:12px}.prima .world-label{color:#d8b66b}.kelp .world-label{color:#7ad5ff}.world h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,4.5vw,60px);line-height:1;margin:0 0 18px}.kelp h2{font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-weight:1000;text-transform:uppercase;color:var(--yellow)}.world p{max-width:530px;margin:0 0 25px;color:#d2cbd6;font-size:17px}.enter{display:inline-flex;width:max-content;min-height:48px;padding:12px 20px;align-items:center;border-radius:999px;font-size:14px;font-weight:900}.prima .enter{background:linear-gradient(135deg,#f0d696,#c99b45);color:#160e06}.kelp .enter{background:linear-gradient(135deg,#ffe47b,#ffc928);color:#06101a}
+
+.worlds{
+  width:min(var(--max),calc(100% - 44px));
+  margin:38px auto 90px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+}
+.world{
+  position:relative;
+  min-height:520px;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 30px 80px rgba(0,0,0,.38);
+  text-decoration:none;
+  transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+  isolation:isolate;
+}
+.world:hover{
+  transform:translateY(-7px);
+  border-color:rgba(255,255,255,.2);
+  box-shadow:0 34px 90px rgba(0,0,0,.48);
+}
+.world:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+.prima{
+  background:linear-gradient(145deg,#160d20,#0b080f);
+}
+.prima:before{
+  background:
+    radial-gradient(circle at 78% 24%,rgba(155,92,255,.46),transparent 22rem),
+    radial-gradient(circle at 18% 82%,rgba(226,196,119,.15),transparent 18rem);
+}
+.kelp{
+  background:linear-gradient(145deg,#071a28,#071018);
+}
+.kelp:before{
+  background:
+    radial-gradient(circle at 76% 18%,rgba(53,185,255,.43),transparent 22rem),
+    radial-gradient(circle at 18% 82%,rgba(255,211,78,.15),transparent 18rem);
+}
+.world-art{
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+}
+.prima-art{
+  right:-5%;
+  bottom:-1%;
+  height:96%;
+  width:auto;
+  filter:drop-shadow(0 20px 34px rgba(0,0,0,.52));
+}
+.kelp-art-wrap{
+  top:0;
+  right:0;
+  width:54%;
+  height:100%;
+  overflow:hidden;
+  opacity:.95;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 18%,#000 42%);
+  mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.55) 18%,#000 42%);
+}
+.kelp-art{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 32%;
+  transform:scale(1.05);
+}
+.world-copy{
+  position:relative;
+  z-index:3;
+  min-height:520px;
+  padding:46px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  width:64%;
+}
+.world-label{
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.18em;
+  margin-bottom:12px;
+}
+.prima .world-label{color:#d8b66b}
+.kelp .world-label{color:#7ad5ff}
+.world h2{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(38px,4.5vw,60px);
+  line-height:1;
+  margin:0 0 18px;
+}
+.kelp h2{
+  font-family:Inter,ui-sans-serif,system-ui,sans-serif;
+  font-weight:1000;
+  text-transform:uppercase;
+  color:var(--yellow);
+}
+.world p{
+  max-width:530px;
+  margin:0 0 25px;
+  color:#d2cbd6;
+  font-size:17px;
+}
+.enter{
+  display:inline-flex;
+  width:max-content;
+  min-height:48px;
+  padding:12px 20px;
+  align-items:center;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:900;
+}
+.prima .enter{
+  background:linear-gradient(135deg,#f0d696,#c99b45);
+  color:#160e06;
+}
+.kelp .enter{
+  background:linear-gradient(135deg,#ffe47b,#ffc928);
+  color:#06101a;
+}
 .about{width:min(820px,calc(100% - 44px));margin:0 auto 70px;text-align:center;padding:38px;border-top:1px solid rgba(255,255,255,.09)}.about h2{font-family:Georgia,serif;font-weight:500;font-size:34px;margin:0 0 12px}.about p{color:var(--muted);margin:0}
 .contact{width:min(var(--max),calc(100% - 44px));margin:0 auto 92px;padding:0;border-top:1px solid rgba(226,196,119,.18);border-bottom:1px solid rgba(226,196,119,.12);background:transparent}.contact-inner{display:grid;grid-template-columns:.78fr 1.22fr;gap:42px;align-items:start;padding:58px 0}.contact-copy{padding:12px 0}.contact h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,4vw,52px);font-weight:500;line-height:1.06;margin:0 0 16px;color:#f4eee5}.contact-copy p{max-width:440px;color:var(--muted);font-size:16px;margin:0}.contact-form{padding:28px 30px;border-radius:18px;background:linear-gradient(145deg,rgba(28,18,36,.86),rgba(13,10,18,.92));border:1px solid rgba(226,196,119,.16);box-shadow:0 20px 55px rgba(0,0,0,.24)}.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.contact label{display:block;margin:0 0 7px;font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}.field{margin-bottom:17px}.contact input,.contact textarea{width:100%;border:1px solid rgba(226,196,119,.18);border-radius:9px;background:rgba(7,8,12,.82);color:white;padding:12px 13px;font:inherit;outline:none;transition:.2s ease}.contact input:focus,.contact textarea:focus{border-color:rgba(226,196,119,.55);box-shadow:0 0 0 3px rgba(226,196,119,.06)}.contact textarea{min-height:125px;resize:vertical}.contact button{position:relative;overflow:hidden;margin-top:2px;min-height:46px;border:1px solid rgba(240,214,150,.6);border-radius:999px;padding:11px 21px;font-weight:900;background:linear-gradient(135deg,#f0d696,#c99b45);color:#160e06;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.24)}.contact button:after{content:"";position:absolute;top:-35%;left:-120%;width:35%;height:180%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-24deg);animation:contactFlash 6s ease-in-out infinite}@keyframes contactFlash{0%,74%,100%{left:-120%;opacity:0}10%,18%{opacity:.9}30%{left:145%;opacity:0}}
 footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:20px;color:#918b98;font-size:13px}.footer-links{display:flex;gap:18px}.footer-links a{text-decoration:none}
 @media(max-width:820px){.contact-inner{grid-template-columns:1fr;gap:24px;padding:44px 0}.contact-copy p{max-width:none}.contact-row{grid-template-columns:1fr}.contact-form{padding:23px}}
-@media(max-width:760px){.header{height:auto;min-height:76px;padding:14px 0;align-items:flex-start;gap:14px;flex-direction:column}.nav{display:flex;gap:14px;flex-wrap:wrap}.nav a{font-size:12px}.worlds{grid-template-columns:1fr}.world{min-height:430px;padding:34px}.hero{padding-top:50px}footer{flex-direction:column}}
+@media(max-width:760px){
+  .header{
+    height:auto;
+    min-height:76px;
+    padding:14px 0;
+    align-items:flex-start;
+    gap:14px;
+    flex-direction:column;
+  }
+  .nav{display:flex;gap:14px;flex-wrap:wrap}
+  .nav a{font-size:12px}
+  .worlds{grid-template-columns:1fr}
+  .world{
+    min-height:500px;
+  }
+  .world-copy{
+    width:100%;
+    min-height:500px;
+    padding:30px;
+    padding-top:220px;
+  }
+  .prima-art{
+    height:58%;
+    right:4%;
+    bottom:auto;
+    top:8px;
+    opacity:.9;
+  }
+  .kelp-art-wrap{
+    width:100%;
+    height:230px;
+    top:0;
+    right:0;
+    opacity:.92;
+    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 100%);
+    mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 100%);
+  }
+  .kelp-art{
+    object-position:center 28%;
+  }
+  .world h2{
+    font-size:clamp(38px,12vw,54px);
+  }
+  .hero{padding-top:50px}
+  footer{flex-direction:column}
+}
+@media(max-width:430px){
+  .worlds{
+    width:min(var(--max),calc(100% - 28px));
+    gap:18px;
+  }
+  .world{
+    min-height:470px;
+  }
+  .world-copy{
+    min-height:470px;
+    padding:24px;
+    padding-top:205px;
+  }
+  .prima-art{
+    height:53%;
+    right:1%;
+  }
+  .kelp-art-wrap{
+    height:215px;
+  }
+  .world p{
+    font-size:15px;
+  }
+}
 </style>
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
 <header class="header">
@@ -29,8 +231,24 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
 <main>
 <section class="hero"><p class="eyebrow">TWO WORLDS BY L. FENRA</p><h1>Which world do you want to enter?</h1><p class="intro">Choose the darker arcane mysteries of Prima Volta or the fast, funny magical adventures of Kelp Redder.</p></section>
 <section class="worlds" id="books" aria-label="Choose a series">
-<a class="world prima" href="prima-volta.html"><span class="world-label">FANTASY MYSTERY SERIES</span><h2>Prima Volta</h2><p>Impossible crimes, ancient magic, dangerous relics and an investigator who would prefer the evidence to behave itself.</p><span class="enter">Enter Prima Volta</span></a>
-<a class="world kelp" href="kelp-redder.html"><span class="world-label">FUNNY FANTASY FOR AGES 8 TO 11</span><h2>Kelp Redder</h2><p>Magic, technology, goblins, Mugwaps, friendship and a remarkable number of terrible ideas.</p><span class="enter">Enter Kelp Redder</span></a>
+<a class="world prima" href="prima-volta.html">
+  <img class="world-art prima-art" src="landing-prima.png" alt="">
+  <div class="world-copy">
+    <span class="world-label">FANTASY MYSTERY SERIES</span>
+    <h2>Prima Volta</h2>
+    <p>Impossible crimes, ancient magic, dangerous relics and an investigator who would prefer the evidence to behave itself.</p>
+    <span class="enter">Enter Prima Volta</span>
+  </div>
+</a>
+<a class="world kelp" href="kelp-redder.html">
+  <div class="world-art kelp-art-wrap"><img class="kelp-art" src="landing-kelp.jpg" alt=""></div>
+  <div class="world-copy">
+    <span class="world-label">FUNNY FANTASY FOR AGES 8 TO 11</span>
+    <h2>Kelp Redder</h2>
+    <p>Magic, technology, goblins, Mugwaps, friendship and a remarkable number of terrible ideas.</p>
+    <span class="enter">Enter Kelp Redder</span>
+  </div>
+</a>
 </section>
 <section class="about" id="about"><p class="eyebrow">L. FENRA</p><h2>Fantasy in two very different moods</h2><p>From impossible arcane crimes to chaotic magical adventures, each series has its own page, style and reading order.</p></section>
 <section class="contact" id="contact">

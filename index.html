@@ -64,6 +64,7 @@ a{color:inherit}.header{height:76px;display:flex;align-items:center;justify-cont
   z-index:1;
   pointer-events:none;
 }
+.prima-responsive{position:absolute;inset:0;z-index:1;pointer-events:none;display:block}
 .prima-art{
   right:-5%;
   bottom:-1%;
@@ -162,6 +163,32 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
   .world{
     min-height:500px;
   }
+
+  .world.prima{
+    min-height:0;
+    aspect-ratio:941 / 1672;
+  }
+  .world.prima .world-copy{
+    display:none;
+  }
+  .world.prima .prima-art{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    right:auto;
+    bottom:auto;
+    filter:none;
+  }
+  .kelp-art-wrap{
+    height:245px;
+  }
+  .kelp-art{
+    object-position:center 8%;
+    transform:none;
+  }
   .world-copy{
     width:100%;
     min-height:500px;
@@ -211,7 +238,10 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
     right:1%;
   }
   .kelp-art-wrap{
-    height:215px;
+    height:230px;
+  }
+  .kelp-art{
+    object-position:center 6%;
   }
   .world p{
     font-size:15px;
@@ -226,14 +256,17 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
 </head>
 <body>
 <header class="header">
-<a class="brand" href="index.html" aria-label="L. Fenra home"><img class="brand-logo" src="site-logo.png" alt="L. Fenra"></a>
+<a class="brand" href="index.html" aria-label="L. Fenra home"><img class="brand-logo" src="site-logo.webp" alt="L. Fenra"></a>
 <nav class="nav"><a class="current" href="index.html">Home</a><a href="prima-volta.html">Prima Volta</a><a href="kelp-redder.html">Kelp Redder</a><a href="#books">Books</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
 </header>
 <main>
 <section class="hero"><p class="eyebrow">TWO WORLDS BY L. FENRA</p><h1>Which world do you want to enter?</h1><p class="intro">Choose the darker arcane mysteries of Prima Volta or the fast, funny magical adventures of Kelp Redder.</p></section>
 <section class="worlds" id="books" aria-label="Choose a series">
 <a class="world prima" href="prima-volta.html">
-  <img class="world-art prima-art" src="landing-prima.png" alt="">
+  <picture class="prima-responsive">
+    <source media="(max-width: 760px)" srcset="landing-prima-mobile.webp" type="image/webp">
+    <img class="world-art prima-art" src="landing-prima.webp" alt="">
+  </picture>
   <div class="world-copy">
     <span class="world-label">FANTASY MYSTERY SERIES</span>
     <h2>Prima Volta</h2>
@@ -242,7 +275,7 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
   </div>
 </a>
 <a class="world kelp" href="kelp-redder.html">
-  <div class="world-art kelp-art-wrap"><img class="kelp-art" src="landing-kelp.jpg" alt=""></div>
+  <div class="world-art kelp-art-wrap"><img class="kelp-art" src="landing-kelp.webp" alt=""></div>
   <div class="world-copy">
     <span class="world-label">FUNNY FANTASY FOR AGES 8 TO 11</span>
     <h2>Kelp Redder</h2>

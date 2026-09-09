@@ -164,6 +164,7 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
   .hero{padding-top:50px}
   .worlds{grid-template-columns:1fr;gap:18px}
   .world{min-height:650px;aspect-ratio:auto}
+  .world.prima{min-height:0;aspect-ratio:941 / 1672}
   .world::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(6,8,12,.06) 22%,rgba(6,8,12,.36) 48%,rgba(6,8,12,.90) 100%)}
   .prima-responsive,.world-art,.kelp-art-wrap{position:absolute;inset:0}
   .prima-responsive{display:block}
@@ -179,6 +180,7 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
 @media(max-width:430px){
   .worlds{width:min(var(--max),calc(100% - 28px));gap:18px}
   .world{min-height:620px;aspect-ratio:auto}
+  .world.prima{min-height:0;aspect-ratio:941 / 1672}
   .world.prima .world-copy{display:none}
   .world-copy{padding:24px;padding-top:52%}
   .world p{font-size:15px;line-height:1.4}
@@ -203,7 +205,7 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
 <section class="worlds" id="books" aria-label="Choose a series">
 <a class="world prima" href="prima-volta.html">
   <picture class="prima-responsive">
-    <source media="(max-width: 760px)" srcset="landing-prima-mobile.webp" type="image/webp">
+    <source media="(max-width: 760px)" srcset="landing-prima-mobile-final.webp" type="image/webp">
     <img class="world-art prima-art" src="landing-prima.webp" alt="">
   </picture>
   <div class="world-copy">

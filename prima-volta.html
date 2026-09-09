@@ -505,6 +505,8 @@ footer{
 .footer-links a:hover{color:var(--gold2)}
 .status,.view-link{display:none!important}
 .mobile-header,.mobile-hero{display:none}
+.menu-toggle{display:none;width:52px;height:52px;border:1px solid rgba(216,182,107,.24);border-radius:14px;background:rgba(10,7,14,.92);padding:0;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.26)}
+.menu-toggle span{display:block;width:22px;height:2px;border-radius:999px;background:var(--gold2);margin:4px 0}
 
 @media(max-width:900px){
   .detail-card{grid-template-columns:125px 1fr}
@@ -513,20 +515,27 @@ footer{
 @media(max-width:650px){
   .mobile-header{
     display:flex;
-    align-items:flex-start;
+    align-items:center;
     justify-content:space-between;
     gap:12px;
     width:min(var(--max),calc(100% - 28px));
     margin:0 auto;
     padding:14px 0 10px;
+    position:relative;
   }
   .mobile-header .brand-logo{height:50px;max-width:225px;display:block}
-  .mobile-header .nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-  .mobile-header .nav a{font-size:12px;text-decoration:none;color:#d7d2da}
+  .mobile-header .menu-toggle{display:inline-flex;flex-shrink:0}
+  .mobile-header .nav{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:60;padding:16px 18px;flex-direction:column;gap:14px;border-radius:18px;background:rgba(10,7,14,.97);border:1px solid rgba(216,182,107,.18);box-shadow:0 24px 60px rgba(0,0,0,.38)}
+  .mobile-header.menu-open .nav{display:flex}
+  .mobile-header .nav a{font-size:14px;text-decoration:none;color:#d7d2da}
   .mobile-header .nav a.current{color:var(--gold2)}
-  .mobile-hero{display:block;width:100%}
-  .mobile-hero img{display:block;width:100%;height:auto}
+  .mobile-hero{display:block;width:100%;overflow:hidden}
+  .mobile-hero img{display:block;width:100%;height:560px;object-fit:cover;object-position:center 18%}
   .hero-wrap{display:none}
+}
+@media(max-width:430px){
+  .mobile-header .menu-toggle{width:48px;height:48px;border-radius:13px}
+  .mobile-hero img{height:500px;object-position:center 16%}
   /* Fit the complete dramatic Prima artwork to the phone screen.
      Do not force a desktop-sized crop. */
   .hero-wrap{
@@ -622,8 +631,9 @@ footer{
 </head>
 <body>
 
-<header class="mobile-header">
+<header class="mobile-header" data-mobile-menu>
   <a class="brand" href="index.html" aria-label="L. Fenra home"><img class="brand-logo" src="site-logo.webp" alt="L. Fenra"></a>
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <nav class="nav"><a href="index.html">Home</a><a class="current" href="prima-volta.html">Prima Volta</a><a href="kelp-redder.html">Kelp Redder</a><a href="#books">Books</a><a href="#prima-about">About</a><a href="index.html#contact">Contact</a></nav>
 </header>
 
@@ -828,6 +838,31 @@ footer{
   });
 })();
 
+</script>
+<script>
+(function(){
+  document.querySelectorAll('[data-mobile-menu]').forEach(function(header){
+    var button = header.querySelector('.menu-toggle');
+    var nav = header.querySelector('.nav');
+    if(!button || !nav) return;
+    button.addEventListener('click', function(){
+      var open = header.classList.toggle('menu-open');
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        header.classList.remove('menu-open');
+        button.setAttribute('aria-expanded','false');
+      });
+    });
+    document.addEventListener('click', function(event){
+      if(!header.contains(event.target)){
+        header.classList.remove('menu-open');
+        button.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+})();
 </script>
 </body>
 </html>

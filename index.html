@@ -10,7 +10,7 @@
 :root{--ink:#f7f3ec;--muted:#c8c3cd;--gold:#e2c477;--violet:#9b5cff;--blue:#35b9ff;--yellow:#ffd34e;--max:1180px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 18% 25%,rgba(133,66,208,.18),transparent 27rem),radial-gradient(circle at 82% 30%,rgba(39,171,255,.15),transparent 27rem),linear-gradient(180deg,#07080c,#0c1018 60%,#08090d);overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:40px 40px}
-a{color:inherit}.header{height:76px;display:flex;align-items:center;justify-content:space-between;width:min(var(--max),calc(100% - 44px));margin:auto}.brand{text-decoration:none;display:flex;align-items:center}.brand-logo{display:block;height:58px;width:auto;max-width:260px}.nav{display:flex;gap:22px}.nav a{text-decoration:none;color:#d7d2da;font-size:14px}.nav a:hover,.nav a.current{color:white}.nav a.current{color:var(--gold)}
+a{color:inherit}.header{height:76px;display:flex;align-items:center;justify-content:space-between;width:min(var(--max),calc(100% - 44px));margin:auto;position:relative}.brand{text-decoration:none;display:flex;align-items:center}.brand-logo{display:block;height:58px;width:auto;max-width:260px}.nav{display:flex;gap:22px}.nav a{text-decoration:none;color:#d7d2da;font-size:14px}.nav a:hover,.nav a.current{color:white}.nav a.current{color:var(--gold)}.menu-toggle{display:none;width:52px;height:52px;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(15,17,24,.9);padding:0;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.26)}.menu-toggle span{display:block;width:22px;height:2px;border-radius:999px;background:var(--gold);margin:4px 0}
 .hero{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:72px 0 42px;text-align:center}.eyebrow{margin:0 0 15px;font-size:12px;font-weight:900;letter-spacing:.22em;color:var(--gold)}h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(48px,7vw,88px);line-height:.98;margin:0}.intro{max-width:760px;margin:24px auto 0;color:var(--muted);font-size:18px}
 
 .worlds{
@@ -96,7 +96,7 @@ a{color:inherit}.header{height:76px;display:flex;align-items:center;justify-cont
   padding:46px;
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
+  justify-content:flex-start;
   width:64%;
 }
 .world-label{
@@ -121,7 +121,7 @@ a{color:inherit}.header{height:76px;display:flex;align-items:center;justify-cont
 }
 .world p{
   max-width:530px;
-  margin:0 0 25px;
+  margin:0;
   color:#d2cbd6;
   font-size:17px;
 }
@@ -134,6 +134,7 @@ a{color:inherit}.header{height:76px;display:flex;align-items:center;justify-cont
   border-radius:999px;
   font-size:14px;
   font-weight:900;
+  margin-top:auto;
 }
 .prima .enter{
   background:linear-gradient(135deg,#f0d696,#c99b45);
@@ -152,101 +153,36 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
     height:auto;
     min-height:76px;
     padding:14px 0;
-    align-items:flex-start;
+    align-items:center;
     gap:14px;
-    flex-direction:column;
   }
   .brand-logo{height:52px;max-width:235px}
-  .nav{display:flex;gap:14px;flex-wrap:wrap}
-  .nav a{font-size:12px}
-  .worlds{grid-template-columns:1fr}
-  .world{
-    min-height:500px;
-  }
-
-  .world.prima{
-    min-height:0;
-    aspect-ratio:941 / 1672;
-  }
-  .world.prima .world-copy{
-    display:none;
-  }
-  .world.prima .prima-art{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center top;
-    right:auto;
-    bottom:auto;
-    filter:none;
-  }
-  .kelp-art-wrap{
-    height:245px;
-  }
-  .kelp-art{
-    object-position:center 8%;
-    transform:none;
-  }
-  .world-copy{
-    width:100%;
-    min-height:500px;
-    padding:30px;
-    padding-top:220px;
-  }
-  .prima-art{
-    height:58%;
-    right:4%;
-    bottom:auto;
-    top:8px;
-    opacity:.9;
-  }
-  .kelp-art-wrap{
-    width:100%;
-    height:230px;
-    top:0;
-    right:0;
-    opacity:.92;
-    -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 100%);
-    mask-image:linear-gradient(to bottom,#000 0%,#000 56%,transparent 100%);
-  }
-  .kelp-art{
-    object-position:center 28%;
-  }
-  .world h2{
-    font-size:clamp(38px,12vw,54px);
-  }
+  .menu-toggle{display:inline-flex;flex-shrink:0}
+  .nav{display:none;position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:50;padding:16px 18px;flex-direction:column;gap:14px;border-radius:18px;background:rgba(8,10,16,.97);border:1px solid rgba(255,255,255,.12);box-shadow:0 24px 60px rgba(0,0,0,.38)}
+  .header.menu-open .nav{display:flex}
+  .nav a{font-size:14px}
   .hero{padding-top:50px}
+  .worlds{grid-template-columns:1fr;gap:18px}
+  .world{min-height:0;aspect-ratio:4 / 5}
+  .world::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(6,8,12,.06) 22%,rgba(6,8,12,.36) 48%,rgba(6,8,12,.90) 100%)}
+  .prima-responsive,.world-art,.kelp-art-wrap{position:absolute;inset:0}
+  .prima-responsive{display:block}
+  .prima-art,.kelp-art{width:100%;height:100%;object-fit:cover;transform:none;filter:none}
+  .prima-art{object-position:center 12%}
+  .kelp-art-wrap{width:100%;height:100%;opacity:.98;-webkit-mask-image:none;mask-image:none}
+  .kelp-art{object-position:center 10%}
+  .world-copy{width:100%;min-height:100%;padding:28px;padding-top:58%;position:relative;z-index:3}
+  .world h2{font-size:clamp(38px,12vw,54px)}
   footer{flex-direction:column}
 }
 @media(max-width:430px){
-  .worlds{
-    width:min(var(--max),calc(100% - 28px));
-    gap:18px;
-  }
-  .world{
-    min-height:470px;
-  }
-  .world-copy{
-    min-height:470px;
-    padding:24px;
-    padding-top:205px;
-  }
-  .prima-art{
-    height:53%;
-    right:1%;
-  }
-  .kelp-art-wrap{
-    height:230px;
-  }
-  .kelp-art{
-    object-position:center 6%;
-  }
-  .world p{
-    font-size:15px;
-  }
+  .worlds{width:min(var(--max),calc(100% - 28px));gap:18px}
+  .world{aspect-ratio:4 / 5}
+  .world-copy{padding:24px;padding-top:57%}
+  .world p{font-size:15px}
+  .menu-toggle{width:48px;height:48px;border-radius:13px}
 }
+
 </style>
 
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -255,8 +191,9 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
-<header class="header">
+<header class="header" data-mobile-menu>
 <a class="brand" href="index.html" aria-label="L. Fenra home"><img class="brand-logo" src="site-logo.webp" alt="L. Fenra"></a>
+<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 <nav class="nav"><a class="current" href="index.html">Home</a><a href="prima-volta.html">Prima Volta</a><a href="kelp-redder.html">Kelp Redder</a><a href="#books">Books</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
 </header>
 <main>
@@ -264,7 +201,6 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
 <section class="worlds" id="books" aria-label="Choose a series">
 <a class="world prima" href="prima-volta.html">
   <picture class="prima-responsive">
-    <source media="(max-width: 760px)" srcset="landing-prima-mobile.webp" type="image/webp">
     <img class="world-art prima-art" src="landing-prima.webp" alt="">
   </picture>
   <div class="world-copy">
@@ -313,5 +249,30 @@ footer{width:min(var(--max),calc(100% - 44px));margin:auto;padding:32px 0 45px;b
 </section>
 </main>
 <footer><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="prima-volta.html">Prima Volta</a><a href="kelp-redder.html">Kelp Redder</a><a href="#books">Books</a><a href="#about">About</a><a href="#contact">Contact</a></div></footer>
+<script>
+(function(){
+  document.querySelectorAll('[data-mobile-menu]').forEach(function(header){
+    var button = header.querySelector('.menu-toggle');
+    var nav = header.querySelector('.nav');
+    if(!button || !nav) return;
+    button.addEventListener('click', function(){
+      var open = header.classList.toggle('menu-open');
+      button.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        header.classList.remove('menu-open');
+        button.setAttribute('aria-expanded','false');
+      });
+    });
+    document.addEventListener('click', function(event){
+      if(!header.contains(event.target)){
+        header.classList.remove('menu-open');
+        button.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>

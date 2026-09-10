@@ -1,0 +1,31 @@
+/* Prima hero correction for mid-size Samsung/large-phone/tablet widths.
+   The normal <=720px phone layout remains controlled by site.css. */
+@media (min-width:721px) and (max-width:960px){
+  .prima-page .prima-hero-wrap{padding:16px 0 4px}
+  .prima-page .prima-hero{
+    min-height:720px;
+    border-radius:24px;
+    display:flex;
+    align-items:flex-end;
+  }
+  .prima-page .prima-hero-copy{
+    width:100%;
+    padding:0 30px 30px;
+    z-index:4;
+  }
+  .prima-page .prima-hero h1{font-size:clamp(54px,8.5vw,72px)}
+  .prima-page .prima-hero .strap{max-width:560px;font-size:clamp(19px,3vw,25px)}
+  .prima-page .prima-character{
+    right:50%;
+    transform:translateX(50%);
+    top:12px;
+    bottom:auto;
+    height:66%;
+    max-width:82%;
+    object-position:center top;
+  }
+  .prima-page .prima-hero::after{
+    height:56%;
+    background:linear-gradient(180deg,transparent,rgba(5,5,8,.94) 55%);
+  }
+}

@@ -190,8 +190,10 @@ footer{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:40px 0 48px
   .character-card.single{grid-template-columns:1fr}
   .prima-page .book-grid,.kelp-page .book-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .prima-hero{min-height:610px}
-  .prima-hero-copy{width:59%;padding:58px 0 48px 40px}
-  .prima-character{right:-8%;height:92%;max-width:67%}
+  /* Keep the full Prima artwork inside narrower tablet/large-phone viewports.
+     The <=720px phone layout below is intentionally unchanged. */
+  .prima-hero-copy{width:54%;padding:58px 0 48px 34px}
+  .prima-character{right:0;height:88%;max-width:58%;object-position:center bottom}
 }
 
 @media(max-width:720px){

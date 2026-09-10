@@ -22,7 +22,6 @@ img{max-width:100%}
 main{min-height:60vh}
 section[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
 
-/* One header system for all pages */
 .site-header{
   position:sticky;top:0;z-index:100;
   height:var(--header-h);
@@ -50,7 +49,6 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
 .button.gold{color:#111015;background:linear-gradient(135deg,#f8df91,#d9ae4e);box-shadow:0 10px 28px rgba(219,174,78,.20)}
 .button.ghost{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.05)}
 
-/* HOME */
 .home-page{background:radial-gradient(circle at 18% 18%,rgba(111,45,176,.13),transparent 31rem),radial-gradient(circle at 85% 36%,rgba(31,146,206,.08),transparent 32rem),linear-gradient(180deg,#07090e,#0a0d14 55%,#07090e)}
 .home-hero{padding:72px 0 48px;text-align:center}
 .home-hero h1{font-size:clamp(48px,7vw,86px)}
@@ -85,7 +83,6 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
 .field textarea{min-height:150px;resize:vertical}
 .contact-form button{border:0;border-radius:999px;padding:13px 22px;background:linear-gradient(135deg,#f8df91,#d9ae4e);color:#111;font-weight:900;cursor:pointer}
 
-/* SERIES PAGE COMMON STRUCTURE */
 .series-page{background:linear-gradient(180deg,#07090e,#0b0d13 48%,#07090e)}
 .series-intro{padding:76px 0}
 .intro-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:stretch}
@@ -98,11 +95,11 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
 .characters-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .character-card{overflow:hidden;border-radius:26px;border:1px solid var(--line);background:rgba(16,20,29,.8)}
 .character-card.single{grid-column:1/-1;display:grid;grid-template-columns:minmax(280px,.75fr) 1.25fr}
-.character-art{min-height:330px;background:#090b10;overflow:hidden}
+.character-art{min-height:350px;background:#090b10;overflow:hidden}
 .character-art img{display:block;width:100%;height:100%;object-fit:cover}
 .character-art.prima img{object-fit:contain;object-position:center bottom;background:radial-gradient(circle at 50% 35%,rgba(127,54,215,.25),transparent 20rem),#09070c}
 .character-art.kelp img{object-position:center 14%}
-.character-art.gall img{object-fit:contain;object-position:center;background:#071019}
+.character-art.gall img{object-fit:cover;object-position:center 18%;background:#071019}
 .character-copy{padding:28px}
 .character-badge{display:inline-block;margin-bottom:13px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.13);font-size:10px;font-weight:900;letter-spacing:.13em;color:var(--gold2)}
 .character-copy h3{margin:0 0 10px;font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:32px;line-height:1.05}
@@ -135,7 +132,6 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
 .book-body .button{width:100%;margin-top:10px}
 .kelp-page .button.gold{background:linear-gradient(135deg,#ffe88c,#ffc928)}
 
-/* Prima responsive hero, no baked text */
 .prima-hero-wrap{padding:30px 0 18px}
 .prima-hero{position:relative;min-height:650px;overflow:hidden;border-radius:30px;border:1px solid rgba(226,189,99,.17);background:radial-gradient(circle at 74% 22%,rgba(144,73,233,.34),transparent 24rem),radial-gradient(circle at 20% 72%,rgba(112,38,169,.22),transparent 28rem),radial-gradient(circle at 88% 52%,rgba(221,163,61,.15),transparent 20rem),linear-gradient(180deg,#09070c,#0d0813 58%,#08070b);box-shadow:var(--shadow);isolation:isolate}
 .prima-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(236,198,105,.50) 0 1px,transparent 1.4px);background-size:34px 34px;opacity:.16;z-index:0}
@@ -148,7 +144,6 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
 .prima-character{position:absolute;z-index:2;right:0;bottom:-2%;height:96%;width:auto;max-width:60%;object-fit:contain;object-position:right bottom;filter:drop-shadow(0 24px 45px rgba(0,0,0,.42))}
 .prima-page .character-badge{color:#e0bff7}
 
-/* Kelp hero and details */
 .kelp-page{background:radial-gradient(circle at 82% 14%,rgba(33,169,255,.12),transparent 28rem),radial-gradient(circle at 14% 48%,rgba(139,214,60,.06),transparent 24rem),linear-gradient(180deg,#050d15,#0a1824 50%,#06101a)}
 .kelp-hero-wrap{padding:30px 0 18px}
 .kelp-hero{position:relative;overflow:hidden;border-radius:30px;border:1px solid rgba(120,214,255,.20);background:#08131d;box-shadow:var(--shadow)}
@@ -162,12 +157,10 @@ section[id]{scroll-margin-top:calc(var(--header-h) + 18px)}
 .rules-panel h3{margin:0 0 12px;font-family:Georgia,"Times New Roman",serif;font-size:36px;line-height:1}
 .rules-panel ol{margin:0;padding-left:22px;font-weight:800;line-height:1.75}
 
-/* Goblin */
 .goblin-peek{position:fixed;top:38vh;z-index:80;width:clamp(190px,22vw,260px);aspect-ratio:232/311;pointer-events:none;opacity:0;visibility:hidden;filter:drop-shadow(0 16px 30px rgba(0,0,0,.4));transition:opacity .18s ease;will-change:opacity,top,left,right}
 .goblin-peek .goblin-sprite{width:100%;height:100%;display:block;background-image:url('goblin-sprite-sheet.png');background-repeat:no-repeat;background-size:100% 6400%;background-position:0 0}
 .goblin-peek.side-right{right:-38px;left:auto}.goblin-peek.side-left{left:-38px;right:auto}.goblin-peek.side-left .goblin-sprite{transform:scaleX(-1);transform-origin:center}.goblin-peek.playing{opacity:1;visibility:visible}
 
-/* Modal */
 .cover-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.86)}
 .cover-modal.open{display:flex}
 .cover-modal-inner{position:relative;max-width:min(92vw,720px);max-height:92vh}
@@ -183,7 +176,6 @@ footer{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:40px 0 48px
   .prima-hero-copy{width:58%;padding-left:46px}
 }
 
-/* One breakpoint used by all three pages, including phone landscape */
 @media(max-width:960px){
   :root{--header-h:72px}
   .site-header{height:var(--header-h);padding:0 18px;gap:12px}
@@ -235,6 +227,7 @@ footer{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:40px 0 48px
   .characters-grid,.prima-page .book-grid,.kelp-page .book-grid{grid-template-columns:1fr}
   .character-card.single{display:block}
   .character-art{min-height:360px}
+  .character-art.gall{min-height:380px}
   .character-art.prima{min-height:420px}
   .cover-shell{width:min(78%,320px);margin-top:20px}
   .book-body{padding:22px}

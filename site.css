@@ -1,2 +1,13 @@
 @import url("site-base.css");
 @import url("kelp-character-fix.css");
+
+@media (min-width:721px){
+  .kelp-page .kelp-hero{
+    aspect-ratio:1400/472;
+    min-height:0 !important;
+    background:#07131f url("kelp-banner-updated.png") center/100% 100% no-repeat !important;
+  }
+  .kelp-page .kelp-hero picture{
+    visibility:hidden !important;
+  }
+}

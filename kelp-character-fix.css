@@ -1,0 +1,9 @@
+/* Kelp character-card alignment fix */
+.kelp-page .characters-grid{align-items:stretch}
+.kelp-page .character-card{display:flex;flex-direction:column}
+.kelp-page .character-art{height:350px;min-height:350px;background:#071019}
+.kelp-page .character-art img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom;background:#071019}
+.kelp-page .character-copy{flex:1}
+@media(max-width:720px){
+  .kelp-page .character-art,.kelp-page .character-art.gall{height:340px;min-height:340px}
+}

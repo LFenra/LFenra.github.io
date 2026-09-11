@@ -18,7 +18,7 @@
 <div class="goblin-peek side-right" id="goblinPeek" aria-hidden="true"><div class="goblin-sprite" id="goblinSprite" aria-hidden="true"></div></div>
 <main>
   <section class="page-shell kelp-hero-wrap" aria-label="Kelp Redder Adventures">
-    <div class="kelp-hero"><picture><source media="(max-width:720px)" srcset="kelp-character-elf.webp" type="image/webp"><img src="kelp-banner.webp" fetchpriority="high" alt="Kelp Redder, Gall and their magical friends"></picture><div class="kelp-mobile-copy"><p class="eyebrow">FUNNY FANTASY FOR AGES 8 TO 11</p><h1>Meet <span>Kelp Redder</span></h1><p>Magic, technology, friendship and a remarkable number of terrible ideas.</p></div></div>
+    <div class="kelp-hero"><picture><source media="(max-width:720px)" srcset="kelp-character-elf.webp" type="image/webp"><img id="kelpHeroBanner" src="kelp-banner.webp" fetchpriority="high" alt="Kelp Redder, Gall and their magical friends"></picture><div class="kelp-mobile-copy"><p class="eyebrow">FUNNY FANTASY FOR AGES 8 TO 11</p><h1>Meet <span>Kelp Redder</span></h1><p>Magic, technology, friendship and a remarkable number of terrible ideas.</p></div></div>
   </section>
 
   <section class="page-shell series-intro">
@@ -47,6 +47,17 @@
 </main>
 <footer><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="#books">Books</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div></footer>
 <script>
+(function(){
+  if(window.matchMedia('(min-width:721px)').matches){
+    const hero=document.getElementById('kelpHeroBanner');
+    if(hero){
+      fetch('kelp-banner-sharp.b64?v=2',{cache:'force-cache'})
+        .then(r=>{if(!r.ok)throw new Error('banner source unavailable');return r.text();})
+        .then(b64=>{hero.src='data:image/webp;base64,'+b64.trim();})
+        .catch(()=>{});
+    }
+  }
+})();
 (function(){const source='data:text/html,';const titles={goblin:'Kelp Redder and the Goblin in the Wi-Fi',mugwap:'Kelp Redder and the Mugwap',last:'Kelp Redder and the Last Piece'};function applyCover(key,src){const img=document.querySelector('[data-cover="'+key+'"]'),shell=document.querySelector('[data-shell="'+key+'"]');if(!img||!shell||!src)return;img.addEventListener('load',()=>shell.classList.add('loaded'),{once:true});img.src=src}function startGoblin(){const peek=document.getElementById('goblinPeek'),sprite=document.getElementById('goblinSprite');if(!peek||!sprite||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const frameCount=64,frameDuration=125,totalDuration=8000;const spriteSheet=new Image();let playing=false,frameTimer=null,hideTimer=null,ready=false,currentFrame=0;const drawFrame=i=>{const h=sprite.getBoundingClientRect().height||peek.getBoundingClientRect().height;sprite.style.backgroundPosition=`0 -${i*h}px`};const hideGoblin=()=>{peek.classList.remove('playing');playing=false;if(frameTimer){clearInterval(frameTimer);frameTimer=null}if(hideTimer){clearTimeout(hideTimer);hideTimer=null}drawFrame(0)};const playFrames=()=>{let frame=0;currentFrame=0;drawFrame(0);frameTimer=setInterval(()=>{frame++;currentFrame=frame;if(frame>=frameCount){clearInterval(frameTimer);frameTimer=null;return}drawFrame(frame)},frameDuration)};const showGoblin=()=>{if(playing||!ready)return;playing=true;const left=Math.random()<.5;peek.classList.remove('playing','side-left','side-right');peek.classList.add(left?'side-left':'side-right');peek.style.top=Math.round(14+Math.random()*56)+'vh';drawFrame(0);peek.classList.add('playing');playFrames();hideTimer=setTimeout(hideGoblin,totalDuration+250)};spriteSheet.onload=()=>{ready=true};spriteSheet.src='goblin-sprite-sheet.png';window.addEventListener('resize',()=>{if(playing)drawFrame(Math.min(currentFrame,frameCount-1))});setTimeout(()=>{if(ready)showGoblin();else{const wait=setInterval(()=>{if(ready){clearInterval(wait);showGoblin()}},120)}setInterval(showGoblin,20000)},5000)}fetch(source,{headers:{Range:'bytes=0-8388607'},cache:'force-cache'}).then(r=>{if(r.status!==206&&!r.ok){if(r.body&&r.body.cancel)r.body.cancel();throw new Error('historical asset source unavailable')}return r.text()}).then(sourceHtml=>{const tags=sourceHtml.match(/<img\b[^>]*>/gi)||[];Object.entries(titles).forEach(([key,title])=>{const tag=tags.find(t=>{const a=t.match(/\balt="([^"]*)"/i);return a&&a[1].includes(title)});if(!tag)return;const s=tag.match(/\bsrc="(data:image\/[^"]+)"/i);if(s)applyCover(key,s[1])});startGoblin()}).catch(()=>{})})();
 (function(){const header=document.querySelector('[data-mobile-menu]');if(!header)return;const button=header.querySelector('.menu-toggle'),nav=header.querySelector('.site-nav');button.addEventListener('click',()=>{const open=header.classList.toggle('menu-open');button.setAttribute('aria-expanded',open?'true':'false')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}));document.addEventListener('click',e=>{if(!header.contains(e.target)){header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}})})();
 </script>

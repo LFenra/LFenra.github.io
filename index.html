@@ -19,6 +19,10 @@
 .author-social-links a { gap: 10px; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; border: 1px solid #b99cde; border-radius: 8px; background: #181222; color: #f5edff; text-decoration: none; }
 .author-social-links a:hover { background: #322241; }
 .author-social-links a:focus-visible { outline: 3px solid #e6c676; outline-offset: 4px; }
+.kelp-intro-video { position:absolute; inset:0; z-index:1; width:100%; height:100%; object-fit:contain; object-position:center; background:#050608; }
+.kelp-intro-video.kelp-intro-finished { display:none; }
+.world-kelp .world-copy { z-index:3; }
+.world-kelp::after { z-index:2; }
 </style>
 </head>
 <body class="home-page">
@@ -37,6 +41,9 @@
   <section class="page-shell worlds" id="series" aria-label="Choose a series">
     <a class="world-card world-kelp" href="kelp-redder.html">
       <img class="world-art" src="landing-kelp-magic-v4.webp" alt="Kelp Redder casting blue-green magic">
+      <video class="kelp-intro-video" data-kelp-intro autoplay muted playsinline preload="auto" aria-hidden="true">
+        <source src="landing-kelp-intro.mp4" type="video/mp4">
+      </video>
       <div class="world-copy"><span class="world-label">FUNNY FANTASY FOR AGES 8 TO 11</span><h2>Kelp Redder</h2><p>Magic, technology, goblins, Mugwaps, friendship and a remarkable number of terrible ideas.</p><span class="enter">Enter Kelp Redder</span></div>
     </a>
 
@@ -81,6 +88,7 @@
 <footer style="flex-wrap:wrap"><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="#series">Books</a><a href="#about">About</a><a href="#contact">Contact</a></div></footer>
 <script>
 (function(){const header=document.querySelector('[data-mobile-menu]');if(!header)return;const button=header.querySelector('.menu-toggle');const nav=header.querySelector('.site-nav');button.addEventListener('click',()=>{const open=header.classList.toggle('menu-open');button.setAttribute('aria-expanded',open?'true':'false')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}));document.addEventListener('click',e=>{if(!header.contains(e.target)){header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}})})();
+(function(){const video=document.querySelector('[data-kelp-intro]');if(!video)return;const finish=()=>video.classList.add('kelp-intro-finished');video.addEventListener('ended',finish,{once:true});video.addEventListener('error',finish,{once:true});const play=video.play();if(play&&typeof play.catch==='function')play.catch(finish)})();
 </script>
 </body>
 </html>

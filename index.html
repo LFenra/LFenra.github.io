@@ -19,7 +19,8 @@
 .author-social-links a { gap: 10px; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px; border: 1px solid #b99cde; border-radius: 8px; background: #181222; color: #f5edff; text-decoration: none; }
 .author-social-links a:hover { background: #322241; }
 .author-social-links a:focus-visible { outline: 3px solid #e6c676; outline-offset: 4px; }
-.kelp-intro-video,.prima-intro-video { position:absolute; inset:0; z-index:1; width:100%; height:100%; object-fit:contain; object-position:center; background:#050608; }
+.kelp-intro-video,.prima-intro-video { position:absolute; inset:0; z-index:1; width:100%; height:100%; object-fit:cover; object-position:center center; background:#050608; }
+.world-kelp .world-art,.world-prima .world-art { position:absolute; inset:0; width:100%; height:100%; object-fit:cover !important; object-position:center center !important; }
 .kelp-intro-video.kelp-intro-finished,.prima-intro-video.prima-intro-finished { display:none; }
 .world-kelp .world-copy,.world-prima .world-copy { z-index:3; }
 .world-kelp::after,.world-prima::after { z-index:2; }

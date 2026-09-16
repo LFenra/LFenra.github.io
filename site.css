@@ -11,3 +11,36 @@
     visibility:hidden !important;
   }
 }
+
+/* Landing-page cards: show the complete still image after each intro video.
+   A softened copy fills the card behind it so there are no black side bars. */
+body.home-page .world-card{
+  position:relative;
+  overflow:hidden;
+}
+body.home-page .world-kelp::before,
+body.home-page .world-prima::before{
+  content:"";
+  position:absolute;
+  inset:-24px;
+  z-index:0;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  filter:blur(18px) brightness(.52) saturate(.9);
+  transform:scale(1.08);
+  pointer-events:none;
+}
+body.home-page .world-kelp::before{
+  background-image:url("landing-kelp-magic-v4.webp");
+}
+body.home-page .world-prima::before{
+  background-image:url("landing-prima-video-final.webp");
+}
+body.home-page .world-kelp .world-art,
+body.home-page .world-prima .world-art{
+  z-index:1;
+  object-fit:contain !important;
+  object-position:center center !important;
+  background:transparent !important;
+}

@@ -29,3 +29,39 @@
     background:linear-gradient(180deg,transparent,rgba(5,5,8,.94) 55%);
   }
 }
+
+/* Give Prima's character profile a more deliberate editorial layout. */
+.prima-page #characters .character-copy{
+  display:flex;
+  flex-direction:column;
+}
+.prima-page #characters .character-copy p{
+  white-space:pre-line;
+  max-width:760px;
+  line-height:1.72;
+}
+.prima-page #characters .character-copy::after{
+  content:"\201C Establish what happened. Separate fact from assumption. Follow the evidence.\201D";
+  display:block;
+  margin-top:28px;
+  padding:20px 22px;
+  border-left:3px solid #e2bd63;
+  border-radius:0 16px 16px 0;
+  background:linear-gradient(90deg,rgba(226,189,99,.09),rgba(127,54,215,.06));
+  color:#f4f2f5;
+  font:500 20px/1.45 Georgia,"Times New Roman",serif;
+}
+@media (min-width:961px){
+  .prima-page #characters .character-copy{
+    padding:34px 40px 32px;
+  }
+  .prima-page #characters .character-copy::after{
+    margin-top:auto;
+  }
+}
+@media (max-width:720px){
+  .prima-page #characters .character-copy::after{
+    font-size:18px;
+    padding:18px;
+  }
+}

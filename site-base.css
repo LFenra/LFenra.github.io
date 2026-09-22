@@ -204,7 +204,20 @@ footer{width:min(var(--max),calc(100% - 44px));margin:0 auto;padding:40px 0 48px
   .world-card{min-height:610px;border-radius:24px}
   .world-prima{min-height:0;aspect-ratio:941/1672}
   .world-prima::after{display:none}
-  .world-prima .world-copy{display:none}
+  .world-prima .world-copy{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    padding:0 20px 24px;
+  }
+  .world-prima .world-copy .world-label,
+  .world-prima .world-copy h2,
+  .world-prima .world-copy p{display:none}
+  .world-prima .world-copy .enter{
+    display:inline-flex;
+    position:relative;
+    z-index:4;
+  }
   .world-kelp .world-copy{padding:24px}
   .world-kelp .world-art{object-fit:contain;object-position:right center}
   .author-home,.contact,.section,.series-intro{padding:60px 0}

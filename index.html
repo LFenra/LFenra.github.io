@@ -119,5 +119,6 @@
 (function(){const video=document.querySelector('[data-kelp-intro]');if(!video)return;const card=video.closest('.world-card');const finish=()=>{video.classList.add('kelp-intro-finished');if(card)card.classList.remove('video-playing')};video.addEventListener('ended',finish,{once:true});video.addEventListener('error',finish,{once:true});const play=video.play();if(play&&typeof play.catch==='function')play.catch(finish)})();
 (function(){const video=document.querySelector('[data-prima-intro]');if(!video)return;const card=video.closest('.world-card');const finish=()=>{video.classList.add('prima-intro-finished');if(card)card.classList.remove('video-playing')};video.addEventListener('ended',finish,{once:true});video.addEventListener('error',finish,{once:true});const play=video.play();if(play&&typeof play.catch==='function')play.catch(finish)})();
 </script>
+<script data-goatcounter="https://lfenra.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

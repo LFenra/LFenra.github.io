@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Fenraverse | L. Fenra</title>
+<meta name="description" content="How the Prima Volta, Kelp Redder and Tara Volta series connect. One world, three eras and one long story about the choices people were never given.">
+<meta name="theme-color" content="#07090e">
+<link rel="stylesheet" href="site.css">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png"><link rel="icon" type="image/x-icon" href="favicon.ico"><link rel="shortcut icon" href="favicon.ico"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The Fenraverse map. Everything is scoped under .fv so the
+   infographic's own typography cannot leak into site chrome.
+   ============================================================ */
+.fv-hero{padding:64px 0 10px;text-align:center}
+.fv-hero h1{font-size:clamp(46px,7vw,84px);color:var(--gold2)}
+.fv-saga{margin:10px 0 0;font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:clamp(15px,2.4vw,24px);letter-spacing:.34em;color:#c9a24a;text-transform:uppercase}
+.fv-hero .intro{max-width:760px;margin:22px auto 0;color:var(--muted);font-size:clamp(16px,1.7vw,20px)}
+.fv-wrap{padding:30px 0 20px}
+
+.fv{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  border:1px solid rgba(201,162,74,.28);box-shadow:var(--shadow);
+  background:radial-gradient(980px 660px at 50% 1%,#3a1c66 0%,#1b1038 32%,#0b0819 62%,#06060d 100%);
+  font-family:'Cormorant Garamond',Georgia,serif;color:#ece4d4;
+  padding:46px 48px 40px;display:flex;flex-direction:column;gap:26px;line-height:1.5;
+}
+.fv h2,.fv h3{margin:0}
+.fv-frame1,.fv-frame2{position:absolute;pointer-events:none;border-radius:14px}
+.fv-frame1{left:16px;top:16px;right:16px;bottom:16px;border:1px solid rgba(201,162,74,.45)}
+.fv-frame2{left:23px;top:23px;right:23px;bottom:23px;border:1px solid rgba(201,162,74,.18)}
+.fv-stars{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
+
+/* ---- chips ---- */
+.fv-chips{display:flex;gap:11px;flex-wrap:wrap;justify-content:center}
+.fv-chip{display:flex;align-items:center;gap:8px;border:1px solid rgba(201,162,74,.4);border-radius:999px;padding:7px 17px;background:rgba(12,9,26,.65);font-size:17px}
+
+/* ---- the spine ---- */
+.fv-spine{position:relative;padding-left:44px}
+.fv-thread{position:absolute;left:calc(50% - 1.5px);top:10px;bottom:10px;width:3px;transform:scaleY(var(--p,0));transform-origin:top;
+  background:linear-gradient(180deg,rgba(165,107,255,0) 0%,#a56bff 7%,#a56bff 30%,#2ec9bd 52%,#f6b27a 76%,#f6b27a 94%,rgba(246,178,122,0) 100%)}
+.fv-family{position:absolute;left:0;top:17%;bottom:10%;width:24px}
+.fv-family .dash{position:absolute;left:11px;top:0;bottom:0;border-left:2px dashed rgba(201,162,74,.5)}
+.fv-family .dot{position:absolute;left:6px;width:12px;height:12px;border-radius:50%}
+.fv-family .dot.a{top:-6px;background:#a56bff;box-shadow:0 0 12px #a56bff}
+.fv-family .dot.b{bottom:-6px;background:#f6b27a;box-shadow:0 0 12px #f6b27a}
+.fv-family .lbl{position:absolute;left:-3px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-family:'Cinzel',serif;font-size:11px;letter-spacing:3.4px;color:#a08a5e;background:#130c2a;padding:10px 2px}
+
+.fv-era{position:relative;height:40px;margin-top:24px}
+.fv-era.first{margin-top:0}
+.fv-era .tag{position:absolute;left:50%;top:0;transform:translateX(-50%);display:flex;align-items:center;gap:9px;border-radius:999px;padding:8px 20px;white-space:nowrap;transition:box-shadow .5s ease}
+.fv-era .tag span{font-family:'Cinzel',serif;font-size:14px;font-weight:600;letter-spacing:3px}
+.fv-era .tag.p{border:1px solid rgba(165,107,255,.7);background:linear-gradient(180deg,#2b1456,#170c33)}
+.fv-era .tag.p span{color:#e6daff}
+.fv-era .tag.k{border:1px solid rgba(46,201,189,.7);background:linear-gradient(180deg,#0c4f52,#072e34)}
+.fv-era .tag.k span{color:#d8fffb}
+.fv-era .tag.t{border:1px solid rgba(246,178,122,.7);background:linear-gradient(180deg,#5c3618,#2e1c10)}
+.fv-era .tag.t span{color:#ffeedd}
+
+.fv-row{position:relative;display:flex;gap:44px;margin-top:16px;align-items:flex-start}
+.fv-node{position:absolute;left:50%;top:50%;width:17px;height:17px;margin:-8px 0 0 -8px;border-radius:50%}
+.fv-vig{width:440px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+.fv-vig svg{width:286px;height:286px}
+.fv-cap{border-radius:3px;padding:8px 18px;text-align:center}
+.fv-cap .t1{font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:2.6px}
+.fv-cap .t2{font-size:15px;font-style:italic;margin-top:2px}
+
+.fv-card{width:440px;flex-shrink:0;position:relative;border-radius:5px;padding:20px 22px;display:flex;flex-direction:column;gap:11px}
+.fv-card h2{font-family:'Cinzel',serif;font-weight:700;font-size:44px;line-height:1}
+.fv-pill{font-family:'Cinzel',serif;font-size:10.5px;font-weight:600;letter-spacing:1.6px;border-radius:999px;padding:6px 13px}
+.fv-meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.fv-meta div{font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:2.4px}
+.fv-tags{display:flex;gap:7px;flex-wrap:wrap}
+.fv-lead{font-size:19px;line-height:1.35;color:#ddd3ec}
+.fv-quote{border-left:3px solid #c9a24a;padding-left:13px;font-size:17.5px;font-style:italic;line-height:1.35;color:#b9aed2}
+
+/* clickable book spines */
+.fv-spines{display:flex;gap:6px;align-items:flex-end;margin-top:2px;flex-wrap:wrap}
+.fv-book{width:38px;height:92px;border-radius:2px 4px 4px 2px;display:flex;align-items:center;justify-content:center;border:1px solid;cursor:pointer;padding:0;font:inherit}
+.fv-book span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11.5px;font-weight:600;letter-spacing:2px;white-space:nowrap}
+.fv-book:focus-visible{outline:3px solid #f6d986;outline-offset:3px}
+
+/* Prima */
+.fv-prima{background:linear-gradient(145deg,rgba(56,26,112,.92),rgba(24,12,52,.94) 58%,rgba(14,8,32,.96));border:1px solid rgba(201,162,74,.5)}
+.fv-prima::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#a56bff,#5a2fb0);border-radius:5px 0 0 5px}
+.fv-prima h2{color:#f2d98f}
+.fv-pill.gold{color:#1a0f33;background:linear-gradient(135deg,#f0d089,#c9992f)}
+.fv-tags .o{font-size:15px;color:#cbb0ff;border:1px solid rgba(165,107,255,.5);border-radius:999px;padding:5px 13px}
+
+/* Kelp */
+.fv-kelp{border:1px solid rgba(46,201,189,.6);background:linear-gradient(145deg,rgba(10,62,66,.94),rgba(7,32,42,.95) 60%,rgba(6,20,30,.96));overflow:hidden;padding:0}
+.fv-win{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,#1f9892,#0d5f64);padding:6px 10px}
+.fv-win .t{font-family:ui-monospace,'Courier New',monospace;font-size:13px;font-weight:700;letter-spacing:1.4px;color:#e4fffb}
+.fv-win .b{display:flex;gap:4px}
+.fv-win .b i{display:block;width:13px;height:11px;border:1.5px solid #bff4ee}
+.fv-kbody{padding:18px 22px 20px;display:flex;flex-direction:column;gap:11px}
+.fv-kbody h2{font-family:'Fredoka',sans-serif;font-weight:700;font-size:44px;line-height:1;color:#6fe8de}
+.fv-pill.teal{font-family:'Fredoka',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.2px;color:#04282c;background:linear-gradient(135deg,#7ff0e5,#28b5ab)}
+.fv-tags .t{font-size:15px;color:#8fd4cd;border:1px solid rgba(46,201,189,.55);border-radius:999px;padding:5px 13px}
+.fv-people{display:flex;gap:9px}
+.fv-person{flex:1;border-radius:4px;padding:9px 12px;cursor:pointer;transition:transform .25s ease,border-color .25s ease}
+.fv-person:hover{transform:translateY(-3px)}
+.fv-person:focus-visible{outline:3px solid #f6d986;outline-offset:3px}
+.fv-person.k{border:1.5px solid rgba(111,232,222,.5);background:rgba(6,46,50,.7)}
+.fv-person.k:hover{border-color:#6fe8de}
+.fv-person.g{border:1.5px solid rgba(201,162,74,.5);background:rgba(44,36,16,.55)}
+.fv-person.g:hover{border-color:#e8c66a}
+.fv-person b{font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;display:block}
+.fv-person.k b{color:#bff4ee}
+.fv-person.g b{color:#f2d98f}
+.fv-person small{display:block;font-size:15.5px;line-height:1.28}
+.fv-person.k small{color:#8fd4cd}
+.fv-person.g small{color:#c5b68f}
+.fv-kquote{border-left:3px solid #2ec9bd;padding-left:13px;font-family:'Fredoka',sans-serif;font-weight:500;font-size:17px;line-height:1.33;color:#a9e4de}
+.fv-kfoot{display:flex;gap:6px;align-items:flex-end;flex-wrap:wrap}
+.fv-kfoot .fv-book{height:84px;background:linear-gradient(100deg,#2ec9bd,#11787a);border-color:rgba(191,244,238,.6)}
+.fv-kfoot .fv-book span{font-family:'Fredoka',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:1.4px;color:#04282c}
+.fv-kfoot .more{flex:1;padding-left:8px;min-width:120px}
+.fv-kfoot .more .a{font-family:'Fredoka',sans-serif;font-size:16px;color:#e4fffb}
+.fv-kfoot .more .a strong{color:#6fe8de}
+.fv-kfoot .more .b{font-size:15.5px;color:#8fd4cd}
+
+/* Tara */
+.fv-tara{border:1px solid rgba(246,178,122,.55);background:linear-gradient(145deg,rgba(74,48,24,.9),rgba(36,24,46,.94) 58%,rgba(18,13,32,.96))}
+.fv-tara::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#f6b27a,#b06a3a);border-radius:5px 0 0 5px}
+.fv-tara h2{color:#fbe0c0}
+.fv-pill.peach{color:#2a1708;background:linear-gradient(135deg,#fbd2a8,#e09a5c)}
+.fv-tags .dash{font-size:15px;color:#f8c79b;border:1px dashed rgba(246,178,122,.7);border-radius:999px;padding:5px 13px}
+.fv-lead2{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fv-lead2 span{font-size:17px;color:#ddd3ec}
+.fv-lead2 strong{color:#fbe0c0}
+.fv-choice{border-left:3px solid #f6b27a;padding-left:13px;font-size:17.5px;line-height:1.35;color:#cdbda8}
+.fv-choice strong{font-family:'Cinzel',serif;font-size:16px;letter-spacing:2px;color:#fbe0c0;font-weight:600}
+.fv-faces .lbl{font-family:'Cinzel',serif;font-size:11px;letter-spacing:2.8px;color:#b09a86}
+.fv-faces .list{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.fv-faces .list span{font-size:16px;color:#ece4d4;border:1px solid rgba(165,107,255,.5);border-radius:999px;padding:4px 12px}
+.fv-faces .list span.k{border-color:rgba(46,201,189,.55)}
+.fv-faces .list span.p{border-color:rgba(246,178,122,.55)}
+.fv-faces .list span.gr{font-style:italic;color:#f8c79b;border:1px dashed rgba(201,162,74,.7)}
+.fv-open{margin-top:4px;align-self:flex-start;font-family:'Fredoka',sans-serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#fbe0c0;border:1px solid rgba(246,178,122,.7);border-radius:999px;padding:10px 18px;background:rgba(246,178,122,.08);cursor:pointer;min-height:44px}
+.fv-open:hover{background:rgba(246,178,122,.18)}
+.fv-open:focus-visible{outline:3px solid #f6d986;outline-offset:3px}
+
+/* saga */
+.fv-saga-box{position:relative;display:flex;align-items:center;gap:28px;border:1px solid rgba(201,162,74,.3);border-radius:6px;background:linear-gradient(90deg,rgba(42,20,82,.6),rgba(12,42,46,.5) 50%,rgba(60,38,18,.55));padding:22px 28px}
+.fv-saga-txt{flex:1;display:flex;flex-direction:column;gap:9px;min-width:0}
+.fv-saga-txt p{margin:0;font-size:20px;line-height:1.4;color:#ddd3ec}
+.fv-saga-txt .note{display:flex;align-items:center;gap:11px;border-left:3px solid #c9a24a;padding-left:13px;font-size:18px;color:#c9bcd8;line-height:1.32}
+.fv-saga-box .divider{width:1px;align-self:stretch;background:rgba(201,162,74,.26)}
+.fv-key{width:150px;flex-shrink:0;display:flex;flex-direction:column;gap:7px}
+.fv-key .k0{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:2.6px;color:#a08a5e}
+.fv-key .r{display:flex;align-items:center;gap:9px;font-size:15.5px}
+.fv-key i{display:block;width:22px;height:3px;border-radius:2px}
+
+/* start anywhere */
+.fv-start{display:flex;flex-direction:column;gap:12px;align-items:center}
+.fv-start-hd{display:flex;align-items:center;gap:18px;width:100%}
+.fv-start-hd .ln{flex:1;height:1px}
+.fv-start-hd .ln.l{background:linear-gradient(90deg,transparent,#c9a24a)}
+.fv-start-hd .ln.r{background:linear-gradient(270deg,transparent,#c9a24a)}
+.fv-start-hd b{font-family:'Cinzel',serif;font-size:22px;font-weight:700;letter-spacing:5px;color:#f2d98f;white-space:nowrap}
+.fv-start .lead3{font-size:18.5px;font-style:italic;color:#b9aed2;margin-top:-2px;text-align:center}
+.fv-arches{display:flex;gap:18px;width:100%;margin-top:4px}
+.fv-arch{flex:1;text-decoration:none;border-radius:110px 110px 6px 6px;padding:24px 14px 18px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;transition:transform .3s ease,background .3s ease}
+.fv-arch .a{font-family:'Cinzel',serif;font-size:11px;letter-spacing:2.2px;color:#b9aed2}
+.fv-arch .b{font-family:'Cinzel',serif;font-size:26px;font-weight:700}
+.fv-arch .c{font-size:16.5px}
+.fv-arch.p{border:1px solid rgba(165,107,255,.6);background:linear-gradient(180deg,rgba(62,30,124,.65),rgba(18,10,40,.5))}
+.fv-arch.p .b{color:#f2d98f}.fv-arch.p .c{color:#cbb0ff}
+.fv-arch.k{border:1px solid rgba(46,201,189,.6);background:linear-gradient(180deg,rgba(12,78,80,.65),rgba(8,26,34,.5))}
+.fv-arch.k .b{font-family:'Fredoka',sans-serif;color:#6fe8de}.fv-arch.k .c{color:#8fd4cd}
+.fv-arch.t{border:1px dashed rgba(246,178,122,.65);background:linear-gradient(180deg,rgba(90,56,26,.55),rgba(24,16,34,.5))}
+.fv-arch.t .b{color:#fbe0c0}.fv-arch.t .c{color:#f8c79b}
+a.fv-arch:hover{transform:translateY(-5px);background-color:rgba(255,255,255,.04)}
+a.fv-arch:focus-visible{outline:3px solid #f6d986;outline-offset:4px}
+
+/* ---- scroll motion ---- */
+.fv-rv{opacity:0;transform:translateY(26px);transition:opacity 1.4s ease,transform 1.4s ease;transition-delay:var(--d,0ms)}
+.fv-rv.in{opacity:1;transform:none}
+.fv-row .fv-vig,.fv-row .fv-card{opacity:0;transition:opacity 2.8s ease,transform 2.8s cubic-bezier(.2,.8,.2,1)}
+.fv-row .fv-vig{transform:translateX(-90px) scale(.9)}
+.fv-row .fv-card{transform:translateX(90px);transition-delay:.5s}
+.fv-row.flip .fv-vig{transform:translateX(90px) scale(.9)}
+.fv-row.flip .fv-card{transform:translateX(-90px)}
+.fv-row.in .fv-vig,.fv-row.in .fv-card{opacity:1;transform:none}
+.fv-row .fv-vig svg{transform:rotate(-30deg) scale(.7);transition:transform 4s cubic-bezier(.2,.8,.2,1)}
+.fv-row.in .fv-vig svg{transform:none}
+.fv-book.fv-rv{opacity:0;transform:translateY(24px) scale(.5);transition:opacity 1.6s ease,transform 1.8s cubic-bezier(.34,1.56,.64,1)}
+.fv-book.fv-rv.in{opacity:1;transform:none}
+.fv-era.in .tag{box-shadow:0 0 26px rgba(165,107,255,.3)}
+.fv-saga-box svg{transition:transform 5s cubic-bezier(.2,.8,.2,1)}
+.fv-saga-box.fv-rv svg{transform:rotate(-200deg)}
+.fv-saga-box.fv-rv.in svg{transform:none}
+.fv-start .fv-arch{opacity:0;transform:translateY(50px);transition:opacity 2.2s ease,transform 2.2s cubic-bezier(.2,.8,.2,1)}
+.fv-start.in .fv-arch{opacity:1;transform:none}
+.fv-start.in .fv-arch:nth-child(2){transition-delay:.5s}
+.fv-start.in .fv-arch:nth-child(3){transition-delay:1s}
+@media(prefers-reduced-motion:reduce){
+  .fv-rv,.fv-row .fv-vig,.fv-row .fv-card,.fv-row .fv-vig svg,.fv-book.fv-rv,.fv-saga-box svg,.fv-start .fv-arch{opacity:1!important;transform:none!important;transition:none!important}
+  .fv-thread{transform:scaleY(1)!important}
+}
+
+/* ---- popup ---- */
+.fv-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60;padding:16px;background:rgba(3,2,8,.82);backdrop-filter:blur(4px)}
+.fv-modal.open{display:flex;animation:fvFade .3s ease}
+@keyframes fvFade{from{opacity:0}to{opacity:1}}
+.fv-panel{position:relative;max-width:760px;width:100%;max-height:92vh;overflow:auto;padding:30px 26px 24px;border-radius:18px;
+  background:linear-gradient(180deg,#171029,#0b0716);border:1px solid rgba(165,107,255,.28);box-shadow:0 30px 80px rgba(0,0,0,.6);
+  font-family:'Cormorant Garamond',Georgia,serif;color:#ece4d4}
+.fv-close{position:absolute;top:8px;right:12px;background:none;border:none;color:#b9abd6;font-size:32px;cursor:pointer;line-height:1;width:44px;height:44px}
+.fv-close:hover{color:#fff}
+.fv-close:focus-visible{outline:3px solid #f6d986;outline-offset:2px;border-radius:8px}
+.fv-grid{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+.fv-grid .fv-coverlink{display:block;border-radius:8px;border:1px solid rgba(165,107,255,.28);overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.fv-grid .fv-coverlink:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(0,0,0,.5);border-color:#f6d986}
+.fv-grid .fv-coverlink:focus-visible{outline:3px solid #f6d986;outline-offset:3px}
+.fv-grid .fv-coverlink img{display:block;width:100%}
+.fv-grid .ser{font-family:'Fredoka',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.fv-grid h3{font-family:'Cinzel',serif;font-size:24px;line-height:1.2;color:#f2d98f}
+.fv-grid p{margin:10px 0;font-size:19px;line-height:1.42;color:#ddd3ec}
+.fv-pics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 6px}
+.fv-pic{background:rgba(255,255,255,.03);border:1px solid rgba(165,107,255,.24);border-radius:10px;padding:10px 8px;text-align:center}
+.fv-pic svg{width:56px;height:56px;display:block;margin:0 auto 6px}
+.fv-pic b{display:block;font-family:'Fredoka',sans-serif;font-weight:600;font-size:13px;letter-spacing:.07em;margin-bottom:2px}
+.fv-pic i{display:block;font-size:15px;color:#b9abd6;line-height:1.3;font-style:italic}
+.fv-buy-row{display:flex;justify-content:center;margin-top:24px}
+.fv-buy{display:flex;align-items:flex-end;justify-content:center;width:250px;height:122px;border-radius:0 0 126px 126px;text-align:center;padding-bottom:26px;text-decoration:none;
+  font-family:'Fredoka',sans-serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;border:2px solid;border-top:none;transition:background .3s ease}
+.fv-buy.p{border-color:#a56bff;color:#c9a9ff}
+.fv-buy.k{border-color:#2ec9bd;color:#6fe8de}
+.fv-buy:hover{background:rgba(255,255,255,.06)}
+.fv-buy:focus-visible{outline:3px solid #f6d986;outline-offset:3px}
+.fv-info-img{width:100%;max-width:290px;display:block;margin:0 auto;border-radius:10px;border:1px solid rgba(165,107,255,.28)}
+.fv-info-tag{font-family:'Fredoka',sans-serif;font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-align:center;margin:0 0 8px}
+.fv-info-title{font-family:'Cinzel',serif;font-size:25px;text-align:center;margin:0 0 16px;color:#f2d98f}
+.fv-info-txt{font-size:19px;line-height:1.46;color:#ddd3ec;margin:14px 0 0;text-align:center}
+.fv-secret{text-align:center;padding:20px 6px 6px}
+.fv-secret .stamp{display:inline-block;font-family:'Fredoka',sans-serif;font-weight:700;letter-spacing:.2em;color:#ff8a7a;border:3px double #ff8a7a;padding:14px 18px;transform:rotate(-3deg);font-size:clamp(14px,3.4vw,18px);line-height:1.5}
+.fv-secret h3{font-family:'Cinzel',serif;margin:28px 0 0;font-size:26px;color:#fbe0c0}
+.fv-secret p{color:#b9abd6;font-style:italic;max-width:520px;margin:14px auto 0;font-size:18px}
+.fv-secret .red{display:inline-block;background:#1a1a1a;color:#1a1a1a;padding:0 7px;border-radius:3px;user-select:none}
+
+/* ---- responsive ---- */
+@media(max-width:1100px){
+  .fv{padding:40px 26px 32px}
+}
+@media(max-width:960px){
+  .fv-spine{padding-left:0}
+  .fv-family,.fv-thread{display:none}
+  .fv-era{height:auto;margin-top:22px;display:flex;justify-content:center}
+  .fv-era .tag{position:static;transform:none}
+  .fv-row{flex-direction:column;align-items:center;gap:18px;margin-top:10px}
+  .fv-node{display:none}
+  .fv-vig,.fv-card{width:100%;max-width:460px}
+  .fv-row .fv-vig,.fv-row .fv-card{transform:translateY(40px)}
+  .fv-row.flip .fv-vig,.fv-row.flip .fv-card{transform:translateY(40px)}
+  .fv-saga-box{flex-direction:column;text-align:center}
+  .fv-saga-box .divider{display:none}
+  .fv-key{width:auto;align-items:center}
+  .fv-arches{flex-direction:column;align-items:center}
+  .fv-arch{width:100%;max-width:360px}
+}
+@media(max-width:720px){
+  .fv{padding:30px 16px 26px;gap:22px;border-radius:18px}
+  .fv-frame1,.fv-frame2{display:none}
+  .fv-vig svg{width:100%;max-width:240px;height:auto}
+  .fv-card h2,.fv-kbody h2{font-size:34px}
+  .fv-people{flex-direction:column}
+  .fv-start-hd b{font-size:17px;letter-spacing:3px}
+  .fv-saga-txt p{font-size:18px}
+  .fv-grid{grid-template-columns:1fr}
+  .fv-grid .fv-coverlink{max-width:210px;margin:0 auto}
+  .fv-pics{grid-template-columns:1fr 1fr}
+  .fv-panel{padding:28px 18px 20px}
+}
+@media(max-width:430px){
+  .fv-chip{font-size:15px;padding:6px 13px}
+  .fv-pics{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body class="series-page fenraverse-page">
+<header class="site-header" data-mobile-menu>
+  <a class="brand" href="index.html" aria-label="L. Fenra home"><img class="brand-logo" src="site-logo.webp" alt="L. Fenra"></a>
+  <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a class="current" href="fenraverse.html">Fenraverse</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+</header>
+<main>
+
+  <section class="page-shell fv-hero" aria-label="The Fenraverse">
+    <p class="eyebrow">ONE WORLD, THREE SERIES</p>
+    <h1 class="display-title">The Fenraverse</h1>
+    <p class="fv-saga">The Unchosen Saga</p>
+    <p class="intro">How the Prima Volta, Kelp Redder and Tara Volta books fit together. Tap any book to see where it sits, then begin wherever you like. No spoilers anywhere on this page.</p>
+  </section>
+
+  <section class="page-shell fv-wrap" aria-label="Map of the Fenraverse">
+  <div class="fv">
+    <div class="fv-frame1" aria-hidden="true"></div>
+    <div class="fv-frame2" aria-hidden="true"></div>
+    <svg class="fv-stars" viewBox="0 0 1080 2290" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="#ffffff">
+        <circle cx="88" cy="168" r="1.4" opacity=".5"/><circle cx="262" cy="96" r="1" opacity=".35"/>
+        <circle cx="446" cy="208" r="1.2" opacity=".3"/><circle cx="688" cy="124" r="1" opacity=".4"/>
+        <circle cx="872" cy="226" r="1.5" opacity=".45"/><circle cx="1004" cy="100" r="1.1" opacity=".3"/>
+        <circle cx="46" cy="560" r="1.2" opacity=".3"/><circle cx="1030" cy="648" r="1.3" opacity=".35"/>
+        <circle cx="40" cy="1040" r="1" opacity=".3"/><circle cx="1042" cy="1180" r="1.2" opacity=".3"/>
+        <circle cx="44" cy="1580" r="1.3" opacity=".32"/><circle cx="1036" cy="1720" r="1" opacity=".3"/>
+        <circle cx="132" cy="2040" r="1.2" opacity=".28"/><circle cx="952" cy="2108" r="1.1" opacity=".3"/>
+      </g>
+    </svg>
+
+    <div class="fv-chips fv-rv">
+      <div class="fv-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b78cff" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>
+        <span>One world, and it is not ours</span>
+      </div>
+      <div class="fv-chip">
+        <span style="font-family:'Cinzel',serif;color:#6fe8de">&asymp;</span>
+        <span>Dates compare to our world, nothing more</span>
+      </div>
+    </div>
+
+    <!-- ===== THE SPINE ===== -->
+    <div class="fv-spine">
+      <div class="fv-thread"></div>
+      <div class="fv-family" aria-hidden="true">
+        <div class="dash"></div><div class="dot a"></div><div class="dot b"></div><div class="lbl">THE FAMILY LINE</div>
+      </div>
+
+      <div class="fv-era first fv-rv"><div class="tag p">
+        <svg width="18" height="19" viewBox="0 0 42 44" fill="none" stroke="#cbb0ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4v5"/><path d="M13 9h16l-2.5 7h-11z"/><path d="M14 16h14l2 11a11 11 0 0 1-18 0z"/><path d="M17 40h8"/><path d="M21 27v13"/></svg>
+        <span>&asymp; OUR INDUSTRIAL AGE</span></div></div>
+
+      <!-- PRIMA -->
+      <div class="fv-row fv-rv" id="prima">
+        <div class="fv-node" style="background:#a56bff;box-shadow:0 0 18px 4px rgba(165,107,255,.8)"></div>
+
+        <div class="fv-vig">
+          <svg data-round="prima" tabindex="0" role="button" viewBox="0 0 300 300" aria-label="What the archway represents. A stone archway filled with purple light, with Prima standing before it in a long coat">
+            <defs>
+              <radialGradient id="pBg" cx="50%" cy="42%" r="62%"><stop offset="0" stop-color="#52269e"/><stop offset=".55" stop-color="#2a1352"/><stop offset="1" stop-color="#140b2c"/></radialGradient>
+              <linearGradient id="pPortal" x1="150" y1="104" x2="150" y2="272" gradientUnits="userSpaceOnUse"><stop stop-color="#f0e2ff"/><stop offset=".35" stop-color="#b98cff"/><stop offset="1" stop-color="#5f2fc0"/></linearGradient>
+              <clipPath id="pClip"><circle cx="150" cy="150" r="146"/></clipPath>
+            </defs>
+            <circle cx="150" cy="150" r="146" fill="url(#pBg)"/>
+            <g clip-path="url(#pClip)">
+              <rect x="14" y="30" width="36" height="132" fill="#3c1c7d" stroke="#c9a24a" stroke-width="1.4"/>
+              <path d="M14 162h36l-18 16z" fill="#3c1c7d" stroke="#c9a24a" stroke-width="1.4"/>
+              <path d="M24 56h16M26 70h12M24 84h16" stroke="#c9a24a" stroke-width="1.2" opacity=".65"/>
+              <rect x="250" y="30" width="36" height="132" fill="#3c1c7d" stroke="#c9a24a" stroke-width="1.4"/>
+              <path d="M250 162h36l-18 16z" fill="#3c1c7d" stroke="#c9a24a" stroke-width="1.4"/>
+              <path d="M260 56h16M262 70h12M260 84h16" stroke="#c9a24a" stroke-width="1.2" opacity=".65"/>
+              <path d="M92 276V152a58 58 0 0 1 116 0v124z" fill="#1b0f3a" stroke="#c9a24a" stroke-width="2.6"/>
+              <path d="M106 276V154a44 44 0 0 1 88 0v122z" fill="url(#pPortal)"/>
+              <path d="M106 276V154a44 44 0 0 1 88 0v122" fill="none" stroke="#e2cdff" stroke-width="1.6" opacity=".9"/>
+              <g stroke="#f4e7bd" stroke-width="2" fill="none" opacity=".92"><path d="M150 146l25.1 43.5h-50.2z"/><path d="M150 204l-25.1-43.5h50.2z"/></g>
+              <circle cx="150" cy="175" r="5" fill="#fff8e2"/>
+              <path d="M62 300h176l-18-24H80z" fill="#241547" stroke="#c9a24a" stroke-width="1.6"/>
+              <ellipse cx="150" cy="288" rx="92" ry="16" fill="#b98cff" opacity=".18"/>
+              <g>
+                <path d="M44 300V226c0-17 7-28 18-33l9-4 11 5 11-5 9 4c11 5 18 16 18 33v74z" fill="#0d0720"/>
+                <path d="M44 300V226c0-17 7-28 18-33l9-4 11 5 11-5 9 4c11 5 18 16 18 33v74" fill="none" stroke="#e8c66a" stroke-width="1.8"/>
+                <path d="M82 194v106" stroke="#e8c66a" stroke-width="1.5" opacity=".8"/>
+                <path d="M58 222l44 30" stroke="#e8c66a" stroke-width="1.5" opacity=".75"/>
+                <path d="M92 244h16a9 9 0 0 1 9 9v15a9 9 0 0 1-9 9H92a9 9 0 0 1-9-9v-15a9 9 0 0 1 9-9z" fill="#1a0f33" stroke="#e8c66a" stroke-width="1.6"/>
+                <circle cx="82" cy="170" r="17" fill="#0d0720" stroke="#e8c66a" stroke-width="1.7"/>
+                <path d="M66 166c-2-14 6-24 16-24s16 9 16 19" fill="#0d0720" stroke="#e8c66a" stroke-width="1.7"/>
+                <path d="M98 154l12-9-3 12 9 4-12 5z" fill="#0d0720" stroke="#e8c66a" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M64 178c-10 4-13 12-14 19" fill="none" stroke="#e8c66a" stroke-width="1.6"/>
+              </g>
+              <path d="M232 300l-6-46 54-9 8 55z" fill="#2b2440" stroke="#c9a24a" stroke-width="1.6"/>
+              <g stroke="#e8c66a" stroke-width="1.5" opacity=".8"><path d="M236 266l40-7M238 278l40-7M240 290l40-7"/></g>
+              <g fill="#f4e7bd">
+                <circle cx="206" cy="112" r="2.4" opacity=".9"/><circle cx="226" cy="150" r="1.8" opacity=".7"/>
+                <circle cx="96" cy="118" r="2" opacity=".8"/><circle cx="74" cy="92" r="1.6" opacity=".6"/>
+                <circle cx="188" cy="86" r="1.8" opacity=".65"/>
+              </g>
+            </g>
+            <circle cx="150" cy="150" r="146" fill="none" stroke="#c9a24a" stroke-width="2.4"/>
+            <circle cx="150" cy="150" r="138" fill="none" stroke="#c9a24a" stroke-width="1" opacity=".45"/>
+          </svg>
+          <div class="fv-cap" style="border:1px solid rgba(201,162,74,.42);background:rgba(12,9,26,.5)">
+            <div class="t1" style="color:#e8c66a">VERITAS IN TENEBRIS NASCITUR</div>
+            <div class="t2" style="color:#9a8fbb">truth is born in darkness</div>
+          </div>
+        </div>
+
+        <div class="fv-card fv-prima">
+          <div class="fv-meta"><div style="color:#c9a24a">ARCANE INQUEST OFFICE</div><div style="color:#8c80ab">WHERE IT STARTS</div></div>
+          <h2>Prima Volta</h2>
+          <div class="fv-tags">
+            <span class="fv-pill gold">OLDER TEENS AND ADULTS</span>
+            <span class="o">elf &middot; detective &middot; wizard</span>
+          </div>
+          <div class="fv-lead">She solves the crimes that magic got its hands on.</div>
+          <div class="fv-quote">Impossible crimes, ancient magic, dangerous relics and an investigator who would prefer the evidence to behave itself.</div>
+          <div class="fv-spines">
+            <button class="fv-book fv-rv" data-book="relic" style="background:linear-gradient(100deg,#6b34c9,#3f1c82);border-color:rgba(201,162,74,.55);--d:0ms" aria-label="Relic, open details"><span style="color:#f2d98f">RELIC</span></button>
+            <button class="fv-book fv-rv" data-book="masque" style="background:linear-gradient(100deg,#6b34c9,#3f1c82);border-color:rgba(201,162,74,.55);--d:80ms" aria-label="Masque, open details"><span style="color:#f2d98f">MASQUE</span></button>
+            <button class="fv-book fv-rv" data-book="veilborn" style="background:linear-gradient(100deg,#8348e0,#4a2296);border-color:rgba(246,178,122,.8);--d:160ms" aria-label="Veilborn, open details"><span style="color:#ffe9c4">VEILBORN</span></button>
+            <button class="fv-book fv-rv" data-book="death" style="background:linear-gradient(100deg,#8348e0,#4a2296);border-color:rgba(246,178,122,.8);--d:240ms" aria-label="Death, open details"><span style="color:#ffe9c4">DEATH</span></button>
+            <div class="fv-kfoot" style="flex:1;padding-left:8px;display:block;min-width:140px">
+              <div style="font-size:16px"><strong style="color:#f2d98f">Four books</strong>, two landing now</div>
+              <div style="font-size:14.5px;color:#f6b27a;line-height:1.5">Veilborn Paradox &middot; 20 Oct<br>Death That Hasn't Happened Yet &middot; 10 Nov</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fv-era fv-rv"><div class="tag k">
+        <svg width="20" height="19" viewBox="0 0 46 44" fill="none" stroke="#7fe6dc" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="36" height="25" rx="3"/><path d="M18 32v5h10v-5"/><path d="M13 40h20"/></svg>
+        <span>&asymp; OUR EARLY 1990s</span></div></div>
+
+      <!-- KELP -->
+      <div class="fv-row fv-rv flip" id="kelp">
+        <div class="fv-node" style="background:#2ec9bd;box-shadow:0 0 18px 4px rgba(46,201,189,.8)"></div>
+
+        <div class="fv-card fv-kelp">
+          <div class="fv-win"><div class="t">KELP_REDDER.EXE</div><div class="b"><i></i><i></i><i></i></div></div>
+          <div class="fv-kbody">
+            <h2>Kelp Redder</h2>
+            <div class="fv-tags">
+              <span class="fv-pill teal">AGES 8 TO 11</span>
+              <span class="t">magic meets the modem</span>
+            </div>
+            <div class="fv-people">
+              <div class="fv-person k" data-person="kelp" tabindex="0" role="button" aria-label="Kelp Redder, open details"><b>Kelp</b><small>elf, eleven, gifted at magic and brilliant at making things worse</small></div>
+              <div class="fv-person g" data-person="gall" tabindex="0" role="button" aria-label="Gall Tyme, open details"><b>Gall Tyme</b><small>human, eleven, prefers technology and sensible plans</small></div>
+            </div>
+            <div class="fv-kquote">Goblins, Mugwaps, friendship and a remarkable number of terrible ideas.</div>
+            <div class="fv-kfoot">
+              <button class="fv-book fv-rv" data-book="goblin" style="--d:0ms" aria-label="Goblin in the Wi-Fi, open details"><span>GOBLIN</span></button>
+              <button class="fv-book fv-rv" data-book="mugwap" style="--d:80ms" aria-label="The Mugwap, open details"><span>MUGWAP</span></button>
+              <button class="fv-book fv-rv" data-book="lastpiece" style="--d:160ms" aria-label="The Last Piece, open details"><span>LAST PIECE</span></button>
+              <div class="more"><div class="a"><strong>Three books</strong></div><div class="b">all out now</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fv-vig">
+          <svg data-round="kelp" tabindex="0" role="button" viewBox="0 0 300 300" aria-label="What the monitor represents. A computer monitor with a grinning goblin climbing out of the screen and wi-fi waves above it">
+            <defs>
+              <radialGradient id="kBg" cx="50%" cy="42%" r="62%"><stop offset="0" stop-color="#17807c"/><stop offset=".55" stop-color="#0a4247"/><stop offset="1" stop-color="#06222c"/></radialGradient>
+              <linearGradient id="kScreen" x1="150" y1="118" x2="150" y2="214" gradientUnits="userSpaceOnUse"><stop stop-color="#0c3f45"/><stop offset="1" stop-color="#05272e"/></linearGradient>
+              <clipPath id="kClip"><circle cx="150" cy="150" r="146"/></clipPath>
+            </defs>
+            <circle cx="150" cy="150" r="146" fill="url(#kBg)"/>
+            <g clip-path="url(#kClip)">
+              <g stroke="#7ff0e5" stroke-width="3.4" stroke-linecap="round" fill="none" opacity=".85">
+                <path d="M214 92a22 22 0 0 1 20 20"/><path d="M214 74a40 40 0 0 1 37 37"/><path d="M214 56a58 58 0 0 1 54 54"/>
+              </g>
+              <circle cx="210" cy="110" r="4.6" fill="#7ff0e5"/>
+              <rect x="56" y="104" width="188" height="122" rx="10" fill="#0e5157" stroke="#7ff0e5" stroke-width="3"/>
+              <rect x="72" y="118" width="156" height="94" rx="5" fill="url(#kScreen)" stroke="#2ec9bd" stroke-width="1.8"/>
+              <rect x="126" y="226" width="48" height="20" fill="#0e5157" stroke="#7ff0e5" stroke-width="2.4"/>
+              <rect x="92" y="246" width="116" height="12" rx="4" fill="#0e5157" stroke="#7ff0e5" stroke-width="2.4"/>
+              <g>
+                <path d="M104 212c0-24 15-40 32-40s32 16 32 40z" fill="#86e08c" stroke="#3f9e4b" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M110 180l-14-22 25 8" fill="#86e08c" stroke="#3f9e4b" stroke-width="2.2" stroke-linejoin="round"/>
+                <path d="M162 180l14-22-25 8" fill="#86e08c" stroke="#3f9e4b" stroke-width="2.2" stroke-linejoin="round"/>
+                <circle cx="124" cy="196" r="4.4" fill="#06222c"/><circle cx="148" cy="196" r="4.4" fill="#06222c"/>
+                <path d="M122 206c6 6 18 6 24 0" stroke="#06222c" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+                <path d="M128 206l2 5M142 206l-2 5" stroke="#06222c" stroke-width="1.8" stroke-linecap="round"/>
+              </g>
+              <g>
+                <rect x="34" y="214" width="34" height="66" rx="6" fill="#0e5157" stroke="#7ff0e5" stroke-width="2.2"/>
+                <rect x="41" y="222" width="20" height="14" rx="2" fill="#05272e"/>
+                <path d="M60 214v-20" stroke="#7ff0e5" stroke-width="2.6" stroke-linecap="round"/>
+                <g fill="#7ff0e5"><circle cx="45" cy="246" r="2.2"/><circle cx="54" cy="246" r="2.2"/><circle cx="45" cy="256" r="2.2"/><circle cx="54" cy="256" r="2.2"/><circle cx="45" cy="266" r="2.2"/><circle cx="54" cy="266" r="2.2"/></g>
+              </g>
+              <g fill="#bff4ee">
+                <circle cx="78" cy="70" r="2.6" opacity=".9"/><circle cx="58" cy="104" r="1.8" opacity=".6"/>
+                <circle cx="258" cy="186" r="2.2" opacity=".75"/><circle cx="236" cy="246" r="1.8" opacity=".6"/>
+              </g>
+            </g>
+            <circle cx="150" cy="150" r="146" fill="none" stroke="#2ec9bd" stroke-width="2.4"/>
+            <circle cx="150" cy="150" r="138" fill="none" stroke="#2ec9bd" stroke-width="1" opacity=".45"/>
+          </svg>
+          <div class="fv-cap" style="border:1px solid rgba(46,201,189,.42);background:rgba(6,26,32,.5)">
+            <div class="t1" style="font-family:'Fredoka',sans-serif;color:#6fe8de;letter-spacing:2.2px">THE GOBLIN IN THE WI-FI</div>
+            <div class="t2" style="color:#7fb8b2">magic found the phone lines</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fv-era fv-rv"><div class="tag t">
+        <svg width="14" height="19" viewBox="0 0 34 44" fill="none" stroke="#fbd2a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="20" height="38" rx="4"/><path d="M14 8h6"/></svg>
+        <span>&asymp; OUR PRESENT DAY</span></div></div>
+
+      <!-- TARA -->
+      <div class="fv-row fv-rv" id="tara">
+        <div class="fv-node" style="background:#f6b27a;box-shadow:0 0 18px 4px rgba(246,178,122,.8)"></div>
+
+        <div class="fv-vig">
+          <svg data-round="tara" tabindex="0" role="button" viewBox="0 0 300 300" aria-label="Restricted file. Prima and Tara, each with a line running to one purple star inside a purple circle, with Tara's orange circle drawn around the whole mark">
+            <defs>
+              <linearGradient id="tBg" x1="18" y1="18" x2="282" y2="282" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#44226f"/><stop offset=".48" stop-color="#2b1f3a"/><stop offset="1" stop-color="#7d4d22"/></linearGradient>
+              <radialGradient id="tGlowP" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#b78cff" stop-opacity=".5"/><stop offset="1" stop-color="#b78cff" stop-opacity="0"/></radialGradient>
+              <clipPath id="tClip"><circle cx="150" cy="150" r="146"/></clipPath>
+            </defs>
+            <circle cx="150" cy="150" r="146" fill="url(#tBg)"/>
+            <g clip-path="url(#tClip)">
+              <circle cx="150" cy="128" r="78" fill="url(#tGlowP)"/>
+              <ellipse cx="80" cy="250" rx="44" ry="9" fill="#b78cff" opacity=".16"/>
+              <ellipse cx="220" cy="252" rx="40" ry="9" fill="#f6b27a" opacity=".18"/>
+              <g fill="#190f33" stroke="#b78cff" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M56 250v-54c0-11 5-17 11-19l6-2 7 3 7-3 6 2c6 2 11 8 11 19v54z"/>
+                <path d="M90 192q10 -8 22 -13" fill="none" stroke-width="1.9"/>
+                <circle cx="80" cy="170" r="12"/>
+                <path d="M66 165l-9-5 2 8-7 3 9 3z"/>
+                <path d="M80 212h16a7 7 0 0 1 7 7v10a7 7 0 0 1-7 7H80a7 7 0 0 1-7-7v-10a7 7 0 0 1 7-7z"/>
+              </g>
+              <path d="M70 167c-2-10 3-17 10-17s11 6 11 12" fill="#190f33" stroke="#b78cff" stroke-width="2.1" stroke-linejoin="round"/>
+              <path d="M113 178L131 150" stroke="#b78cff" stroke-width="2.6" stroke-linecap="round"/>
+              <g fill="none" stroke="#b78cff" stroke-width="2.6">
+                <path d="M150 102l22.5 39h-45z"/><path d="M150 154l-22.5-39h45z"/><circle cx="150" cy="128" r="28"/>
+              </g>
+              <circle cx="150" cy="128" r="4.5" fill="#ece0ff"/>
+              <circle cx="150" cy="128" r="38" fill="none" stroke="#f6b27a" stroke-width="4.6"/>
+              <path d="M187 181L169 150" stroke="#f6b27a" stroke-width="3.6" stroke-linecap="round"/>
+              <g fill="#241406" stroke="#f6b27a" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M202 228v-22c0-9 4-14 9-16l5-2 6 3 6-3 5 2c5 2 9 7 9 16v22z"/>
+                <path d="M207 228h10v24h-10zM221 228h10v24h-10z"/>
+                <path d="M206 202q-10 -8 -17 -16" fill="none" stroke-width="1.9"/>
+                <circle cx="220" cy="180" r="10.5"/>
+                <path d="M231 176l8-5-2 7 6 2-8 3z"/>
+              </g>
+              <path d="M211 177c-2-9 3-15 9-15s10 5 10 11" fill="#241406" stroke="#f6b27a" stroke-width="2.1" stroke-linejoin="round"/>
+              <circle cx="188" cy="185" r="7.5" fill="#241406" stroke="#f6b27a" stroke-width="2.2"/>
+              <text x="80" y="270" text-anchor="middle" font-family="Cinzel, serif" font-size="12" font-weight="600" letter-spacing="2.4" fill="#cbb0ff">PRIMA</text>
+              <text x="220" y="270" text-anchor="middle" font-family="Cinzel, serif" font-size="12" font-weight="600" letter-spacing="2.4" fill="#fbd2a8">TARA</text>
+              <g fill="#fbe0c0">
+                <circle cx="258" cy="92" r="2.4" opacity=".75"/><circle cx="44" cy="70" r="2" opacity=".6"/>
+                <circle cx="266" cy="200" r="1.8" opacity=".55"/><circle cx="36" cy="202" r="2.2" opacity=".55"/>
+              </g>
+            </g>
+            <circle cx="150" cy="150" r="146" fill="none" stroke="#f6b27a" stroke-width="2.4"/>
+            <circle cx="150" cy="150" r="138" fill="none" stroke="#f6b27a" stroke-width="1" opacity=".45"/>
+          </svg>
+          <div class="fv-cap" style="border:1px solid rgba(246,178,122,.42);background:rgba(26,18,38,.5)">
+            <div class="t1" style="color:#fbd2a8;font-size:11px">NOT ALL VOLTAS ARE PRIMA</div>
+            <div class="t2" style="color:#b09a86">some are really special</div>
+          </div>
+        </div>
+
+        <div class="fv-card fv-tara">
+          <div class="fv-meta"><div style="color:#f6b27a">BRAND NEW SERIES</div><div style="color:#b09a86">WHERE IT LANDS</div></div>
+          <h2>Tara Volta</h2>
+          <div class="fv-tags">
+            <span class="fv-pill peach">AGES 12 TO 15</span>
+            <span class="dash">coming next year</span>
+          </div>
+          <div class="fv-lead2">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b78cff" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/></svg>
+            <svg width="52" height="12" viewBox="0 0 52 12" fill="none" aria-hidden="true"><path d="M2 6h44" stroke="#c9a24a" stroke-width="1.6" stroke-dasharray="4 5" stroke-linecap="round"/><path d="M42 2l6 4-6 4" stroke="#c9a24a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6b27a" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/></svg>
+            <span>Prima's <strong>great-granddaughter</strong></span>
+          </div>
+          <div class="fv-choice">Set in an institute called <strong>C.H.O.I.C.E.</strong>, with a few familiar faces already inside.</div>
+          <div class="fv-faces">
+            <div class="lbl">FAMILIAR FACES</div>
+            <div class="list">
+              <span>Merin</span><span>Marr</span><span class="k">Kelp</span><span class="k">Gall</span><span class="p">Del</span>
+              <span class="gr">one famous great granny</span>
+            </div>
+          </div>
+          <button class="fv-open" type="button" data-round="tara">Open restricted file</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== THE SAGA ===== -->
+    <div class="fv-saga-box fv-rv">
+      <svg width="182" height="182" viewBox="0 0 186 186" fill="none" role="img" aria-label="One long story about the choices people were never given, and it comes full circle" style="flex-shrink:0">
+        <defs>
+          <path id="sagaRing" d="M93 17a76 76 0 1 1 0 152a76 76 0 1 1 0-152"/>
+          <linearGradient id="threadGrad" x1="58" y1="58" x2="128" y2="128" gradientUnits="userSpaceOnUse"><stop stop-color="#a56bff"/><stop offset=".5" stop-color="#2ec9bd"/><stop offset="1" stop-color="#f6b27a"/></linearGradient>
+        </defs>
+        <circle cx="93" cy="93" r="84" stroke="rgba(201,162,74,0.35)" stroke-width="1"/>
+        <circle cx="93" cy="93" r="60" stroke="rgba(201,162,74,0.3)" stroke-width="1"/>
+        <text font-family="Cinzel, serif" font-size="12.5" font-weight="600" letter-spacing="3.1" fill="#e8c66a"><textPath href="#sagaRing" startOffset="50%" text-anchor="middle">THE CHOICES PEOPLE WERE NEVER GIVEN</textPath></text>
+        <circle cx="93" cy="93" r="47" fill="rgba(10,8,24,0.65)" stroke="rgba(165,107,255,0.45)" stroke-width="1.2"/>
+        <path d="M93 59a34 34 0 1 1-29 15.5" stroke="url(#threadGrad)" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+        <path d="M58 61l7 14 14-6" stroke="#a56bff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="93" y="89" text-anchor="middle" font-family="Cinzel, serif" font-size="14" font-weight="700" letter-spacing="2" fill="#f2d98f">FULL</text>
+        <text x="93" y="107" text-anchor="middle" font-family="Cinzel, serif" font-size="14" font-weight="700" letter-spacing="2" fill="#f2d98f">CIRCLE</text>
+      </svg>
+      <div class="fv-saga-txt">
+        <p>Underneath all three series runs one long story about the choices people were never given. It comes full circle, and the whole saga is concluded in the Tara books.</p>
+        <div class="note">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8c66a" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16"/><path d="M9 8h6M9 12h6"/></svg>
+          <div>With a full companion book, the same ending from Prima's point of view. Not just what she chose, but what you would need to be thinking to get there.</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="fv-key">
+        <div class="k0">KEY</div>
+        <div class="r"><i style="background:#a56bff"></i><span style="color:#cbb0ff">Prima's era</span></div>
+        <div class="r"><i style="background:#2ec9bd"></i><span style="color:#8fd4cd">Kelp's era</span></div>
+        <div class="r"><i style="background:#f6b27a"></i><span style="color:#f8c79b">Tara's era</span></div>
+        <div class="r"><i style="border-top:2px dashed #c9a24a;background:none;height:0"></i><span style="color:#b9aed2">family line</span></div>
+      </div>
+    </div>
+
+    <!-- ===== START ANYWHERE ===== -->
+    <div class="fv-start fv-rv">
+      <div class="fv-start-hd"><div class="ln l"></div><b>START ANYWHERE</b><div class="ln r"></div></div>
+      <div class="lead3">Each series stands on its own, so begin with whichever suits you or your family.</div>
+      <div class="fv-arches">
+        <a class="fv-arch p" href="prima-volta.html"><div class="a">OLDER TEENS AND ADULTS</div><div class="b">Prima Volta</div><div class="c">four books, two landing now</div></a>
+        <a class="fv-arch k" href="kelp-redder.html"><div class="a">AGES 8 TO 11</div><div class="b">Kelp Redder</div><div class="c">three books, all out now</div></a>
+        <div class="fv-arch t"><div class="a">AGES 12 TO 15</div><div class="b">Tara Volta</div><div class="c">coming next year</div></div>
+      </div>
+    </div>
+
+  </div>
+  </section>
+</main>
+
+<!-- popup -->
+<div class="fv-modal" id="fvModal" role="dialog" aria-modal="true" aria-labelledby="fvTitle">
+  <div class="fv-panel">
+    <button class="fv-close" id="fvClose" type="button" aria-label="Close">&times;</button>
+    <div id="fvBody"></div>
+  </div>
+</div>
+
+<footer><span>&copy; 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="fenraverse.html">Fenraverse</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div></footer>
+
+<script>
+(function(){const header=document.querySelector('[data-mobile-menu]');if(!header)return;const button=header.querySelector('.menu-toggle'),nav=header.querySelector('.site-nav');button.addEventListener('click',()=>{const open=header.classList.toggle('menu-open');button.setAttribute('aria-expanded',open?'true':'false')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}));document.addEventListener('click',e=>{if(!header.contains(e.target)){header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}})})();
+
+(function(){
+  var ICON = {
+    crystal:'<svg viewBox="0 0 64 64" fill="none" stroke="#b78cff" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M32 6 L44 30 L32 58 L20 30 Z"/><path d="M20 30 H44"/><path d="M32 6 L26 30 L32 58 L38 30 Z" opacity=".5"/></svg>',
+    mask:'<svg viewBox="0 0 64 64" fill="none" stroke="#c9a24a" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 14 Q32 4 52 14 Q56 40 32 60 Q8 40 12 14 Z"/><path d="M20 28 Q26 24 30 30 Q26 34 20 28 Z" fill="#a56bff"/><path d="M44 28 Q38 24 34 30 Q38 34 44 28 Z" fill="#a56bff"/><path d="M26 46 Q32 50 38 46"/></svg>',
+    door:'<svg viewBox="0 0 64 64" fill="none" stroke="#a56bff" stroke-width="2.5" aria-hidden="true"><path d="M14 58 V16 Q14 6 32 6 Q50 6 50 16 V58"/><path d="M32 6 V58" opacity=".6"/><circle cx="26" cy="34" r="1.6" fill="#c9a24a"/><path d="M4 58 H60" stroke="#c9a24a"/></svg>',
+    cert:'<svg viewBox="0 0 64 64" fill="none" stroke="#f3ecff" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="8" width="40" height="48" rx="2"/><path d="M20 20 H44 M20 28 H44 M20 36 H36"/><circle cx="40" cy="46" r="5" stroke="#a56bff"/></svg>',
+    goblin:'<svg viewBox="0 0 64 64" fill="none" stroke="#e8e04a" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="36" r="18"/><path d="M14 30 L4 24 M50 30 L60 24"/><path d="M32 18 V4 M26 8 L32 4 L38 8"/><circle cx="25" cy="34" r="2" fill="#e8e04a"/><circle cx="39" cy="34" r="2" fill="#e8e04a"/><path d="M24 44 Q32 50 40 44"/></svg>',
+    router:'<svg viewBox="0 0 64 64" fill="none" stroke="#2ec9bd" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="12" y="34" width="40" height="18" rx="3"/><path d="M22 34 V18 M42 34 V18"/><path d="M14 22 Q32 6 50 22" opacity=".7"/><path d="M19 27 Q32 16 45 27" opacity=".7"/><circle cx="20" cy="43" r="2" fill="#2ec9bd"/><circle cx="28" cy="43" r="2" fill="#2ec9bd"/></svg>',
+    beast:'<svg viewBox="0 0 64 64" fill="none" stroke="#a56bff" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M8 40 Q14 14 32 16 Q50 14 56 40 Q48 56 32 54 Q16 56 8 40 Z"/><path d="M16 28 L12 18 M26 22 L24 12 M38 22 L40 12 M48 28 L52 18" stroke="#c9a24a"/><path d="M22 42 L26 48 L30 42 L34 48 L38 42"/></svg>',
+    wall:'<svg viewBox="0 0 64 64" fill="none" stroke="#2ec9bd" stroke-width="2.5" aria-hidden="true"><path d="M6 56 V26 Q32 4 58 26 V56"/><path d="M18 56 V36 Q32 24 46 36 V56" opacity=".6"/><path d="M26 30 L30 36 L38 26 M32 38 V46" stroke="#6fe8de"/></svg>',
+    stone:'<svg viewBox="0 0 64 64" fill="none" stroke="#c9a24a" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M10 44 L20 18 L36 12 L52 24 L48 46 L30 54 Z"/><path d="M20 18 L30 34 L48 46 M30 34 L36 12" opacity=".6"/></svg>'
+  };
+
+  var BOOKS = {
+    relic:{s:'Prima Volta',c:'p',img:'fv-relic.webp',buy:'https://mybook.to/4KHy4o6',cta:'Buy the book',
+      t:'Prima Volta and the Relic That Refused to Die',
+      b:'A relic that refuses to die, and a case file the Arcane Inquest Office cannot leave alone. Older teens and adults, in an industrial-age world where magic has its hands on the evidence.',
+      pics:[['crystal','The relic','The thing that will not stay buried'],['stone','The city','Industrial-age ruin and old power'],['door','The veil','Where the Inquest goes when the rules run out']]},
+    masque:{s:'Prima Volta',c:'p',img:'fv-masque.webp',buy:'https://mybook.to/wQideqS',cta:'Buy the book',
+      t:'Prima Volta and the Masque of the Empty King',
+      b:'A mask that holds a throne with nobody on it. The Inquest is pulled into a court of masks, banners and old oaths, where the question is what is wearing the face.',
+      pics:[['mask','The masque','A face worn by something that is not there'],['crystal','Violet power','The purple light that answers the mask'],['wall','The court','Banners, arches and old oaths']]},
+    veilborn:{s:'Prima Volta',c:'p',img:'fv-veilborn.webp',buy:'https://mybook.to/rjG3YV',cta:'Pre-order the book',
+      t:'Prima Volta and the Veilborn Paradox',
+      b:'Some things come through the veil and are not meant to be here. A door opens onto a figure that should not be possible, and the Inquest has to hold the paradox in a single room.',
+      pics:[['door','The door','Where the veil is thin'],['beast','The figure','Something born on the far side'],['stone','Veritas','Truth is born in darkness']]},
+    death:{s:'Prima Volta',c:'p',img:'fv-death.webp',buy:'https://mybook.to/R0a1B',cta:'Pre-order the book',
+      t:"Prima Volta and the Death That Hasn't Happened Yet",
+      b:'A death certificate for someone who is still alive, filed for an event that has not happened. The Inquest has to work out what the paper means before the future catches up with it.',
+      pics:[['cert','The certificate','A death filed before it happens'],['wall','The city','Lit windows and a court of stone'],['crystal','The glow','The magic that marks what is coming']]},
+    goblin:{s:'Kelp Redder',c:'k',img:'fv-goblin.webp',buy:'https://mybook.to/02WAw',cta:'Buy the book',
+      t:'Kelp Redder and the Goblin in the Wi-Fi',
+      b:'The Wi-Fi is broken, and that is the least of Kelp’s problems. A tiny goblin is trapped inside the router, and soon things are escaping from screens. Ages 8 to 11.',
+      pics:[['router','The router','Where the goblin is trapped'],['goblin','The goblin','Grinning, pointing, up to no good'],['wall','The glitch','A flash of blue lightning']]},
+    mugwap:{s:'Kelp Redder',c:'k',img:'fv-mugwap.webp',buy:'https://mybook.to/dn7V98U',cta:'Buy the book',
+      t:'Kelp Redder and the Mugwap',
+      b:'A stolen power, a huge problem and a friendship no one saw coming. Kelp and Gall are pulled into a new world where two groups are in danger and someone is stealing power on purpose.',
+      pics:[['beast','The Mugwap','Huge, spiked and extremely annoyed'],['stone','Rocks and falls','A world coming apart underfoot'],['router','The tablet','New friends, new world, new wi-fi']]},
+    lastpiece:{s:'Kelp Redder',c:'k',img:'fv-lastpiece.webp',buy:'https://mybook.to/ZmWTn6y',cta:'Buy the book',
+      t:'Kelp Redder and the Last Piece',
+      b:'The door is open and the Last Piece has been found. An ancient obsidian being has been hiding for a very good reason, and Kelp and Gall need every ally they have made.',
+      pics:[['stone','The last piece','The one piece that was still missing'],['wall','The hall','Torches, banners and old runes'],['beast','The guardian','Violet lightning and a being of stone']]}
+  };
+
+  var ROUNDS = {
+    prima:{t:'The Archway',tag:'Where it starts',c:'#b78cff',
+      x:'The stone archway full of purple light is the way into Prima’s world. She stands before it in her long coat, and the motto carved under it reads “truth is born in darkness”. It stands for the Arcane Inquest Office and the cases that take her past the ordinary rules.'},
+    kelp:{t:'The Goblin in the Wi-Fi',tag:'Early 1990s',c:'#6fe8de',
+      x:'Magic found its way into the phone lines. The grinning goblin climbs out of the monitor while wi-fi waves rise above it, which is how the old magic of this world arrived through a very modern connection. Everything here is the everyday world with one strange thing badly wrong with it.'}
+  };
+
+  var PEOPLE = {
+    kelp:{t:'Kelp Redder',sub:'Elf · Age 11',c:'#6fe8de',img:'kelp-character-elf.webp',alt:'Kelp Redder with pointed elf ears',
+      x:'Magical, confident and usually responsible for the sentence, “What did you do?” Kelp believes most problems can be improved with magic. The evidence does not support this.'},
+    gall:{t:'Gall Tyme',sub:'Human · Age 11',c:'#f2d98f',img:'gall-picture1.webp',alt:'Gall Tyme',
+      x:'Practical, good with technology and sensible enough to recognise a terrible idea. Unfortunately, recognising one and stopping Kelp from doing it are very different skills.'}
+  };
+
+  var modal = document.getElementById('fvModal');
+  var body  = document.getElementById('fvBody');
+  var closeBtn = document.getElementById('fvClose');
+  var lastFocus = null;
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function show(html){
+    lastFocus = document.activeElement;
+    body.innerHTML = html;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+  function hide(){
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function openBook(key){
+    var b = BOOKS[key];
+    if(!b) return;
+    var pics = b.pics.map(function(p){
+      return '<div class="fv-pic">'+ICON[p[0]]+'<b>'+esc(p[1])+'</b><i>'+esc(p[2])+'</i></div>';
+    }).join('');
+    show(
+      '<div class="fv-grid">'+
+        '<a class="fv-coverlink" href="'+b.buy+'" target="_blank" rel="noopener" aria-label="'+esc(b.t)+', '+esc(b.cta.toLowerCase())+'">'+
+          '<img src="'+b.img+'" alt="Cover of '+esc(b.t)+'" loading="lazy">'+
+        '</a>'+
+        '<div>'+
+          '<div class="ser" style="color:'+(b.c==='p'?'#b78cff':'#6fe8de')+'">'+esc(b.s)+'</div>'+
+          '<h3 id="fvTitle">'+esc(b.t)+'</h3>'+
+          '<p>'+esc(b.b)+'</p>'+
+        '</div>'+
+      '</div>'+
+      '<div class="fv-pics">'+pics+'</div>'+
+      '<div class="fv-buy-row"><a class="fv-buy '+b.c+'" href="'+b.buy+'" target="_blank" rel="noopener">'+esc(b.cta)+'</a></div>'
+    );
+  }
+
+  function openSecret(){
+    show(
+      '<div class="fv-secret">'+
+        '<div class="stamp">TOP SECRET<br>ARCANE INQUEST OFFICE ONLY</div>'+
+        '<h3 id="fvTitle">Tara Volta</h3>'+
+        '<p>This file is closed to the public. Ages 12 to 15, set in the present day at an institute called C.H.O.I.C.E. The Inquest does not discuss it, and the people inside it are not asking for permission.</p>'+
+        '<p style="font-size:16px;margin-top:18px">Access: <span class="red">redacted</span> &middot; Opens next year</p>'+
+      '</div>'
+    );
+  }
+
+  function openRound(key){
+    if(key === 'tara'){ openSecret(); return; }
+    var r = ROUNDS[key];
+    if(!r) return;
+    show(
+      '<div class="fv-info-tag" style="color:'+r.c+'">'+esc(r.tag)+'</div>'+
+      '<h3 class="fv-info-title" id="fvTitle">'+esc(r.t)+'</h3>'+
+      '<p class="fv-info-txt">'+esc(r.x)+'</p>'
+    );
+  }
+
+  function openPerson(key){
+    var p = PEOPLE[key];
+    if(!p) return;
+    show(
+      '<div class="fv-info-tag" style="color:'+p.c+'">'+esc(p.sub)+'</div>'+
+      '<h3 class="fv-info-title" id="fvTitle">'+esc(p.t)+'</h3>'+
+      '<img class="fv-info-img" src="'+p.img+'" alt="'+esc(p.alt)+'" loading="lazy">'+
+      '<p class="fv-info-txt">'+esc(p.x)+'</p>'
+    );
+  }
+
+  function wire(selector, attr, handler){
+    Array.prototype.forEach.call(document.querySelectorAll(selector), function(el){
+      var run = function(){ handler(el.getAttribute(attr)); };
+      el.addEventListener('click', run);
+      if(el.tagName !== 'BUTTON'){
+        el.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); run(); }
+        });
+      }
+    });
+  }
+  wire('[data-book]','data-book',openBook);
+  wire('[data-round]','data-round',openRound);
+  wire('[data-person]','data-person',openPerson);
+
+  closeBtn.addEventListener('click', hide);
+  modal.addEventListener('click', function(e){ if(e.target === modal) hide(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('open')) hide();
+  });
+
+  // scroll reveal
+  var items = document.querySelectorAll('.fv-rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    Array.prototype.forEach.call(items, function(el){ io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(items, function(el){ el.classList.add('in'); });
+  }
+
+  // the saga thread draws itself down the spine as the reader scrolls
+  var spine = document.querySelector('.fv-spine');
+  function drawThread(){
+    if(!spine) return;
+    var r = spine.getBoundingClientRect();
+    var p = (window.innerHeight * 0.75 - r.top) / r.height;
+    p = Math.max(0, Math.min(1, p));
+    spine.style.setProperty('--p', p.toFixed(3));
+  }
+  window.addEventListener('scroll', drawThread, {passive:true});
+  window.addEventListener('resize', drawThread);
+  drawThread();
+})();
+</script>
+<script data-goatcounter="https://lfenra.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

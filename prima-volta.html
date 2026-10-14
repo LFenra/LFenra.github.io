@@ -14,7 +14,7 @@
 <header class="site-header" data-mobile-menu>
   <a class="brand" href="index.html" aria-label="L. Fenra home"><img class="brand-logo" src="site-logo.webp" alt="L. Fenra"></a>
   <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a class="current" href="prima-volta.html">Prima Volta</a><a href="#books">Books</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
+  <nav class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a class="current" href="prima-volta.html">Prima Volta</a><a href="fenraverse.html">Fenraverse</a><a href="#books">Books</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></nav>
 </header>
 <main>
   <section class="page-shell prima-hero-wrap" aria-label="Prima Volta">
@@ -50,7 +50,7 @@ She is not interested in being mysterious for the sake of it. She wants answers.
     </div>
   </section>
 </main>
-<footer><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="#books">Books</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div></footer>
+<footer><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="fenraverse.html">Fenraverse</a><a href="#books">Books</a><a href="index.html#about">About</a><a href="index.html#contact">Contact</a></div></footer>
 <div class="cover-modal" id="coverModal" aria-hidden="true"><div class="cover-modal-inner" role="dialog" aria-modal="true" aria-label="Enlarged book cover"><button class="cover-modal-close" type="button" aria-label="Close enlarged cover">×</button><img id="coverModalImage" alt=""></div></div>
 <script>
 (function(){const modal=document.getElementById('coverModal'),modalImg=document.getElementById('coverModalImage'),closeBtn=modal.querySelector('.cover-modal-close');function openCover(shell){const img=shell.querySelector('img');if(!img||!img.src)return;modalImg.src=img.src;modalImg.alt=img.alt||'Enlarged book cover';modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';closeBtn.focus()}function closeCover(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');modalImg.removeAttribute('src');document.body.style.overflow=''}document.querySelectorAll('[data-enlarge-cover]').forEach(shell=>{shell.addEventListener('click',()=>openCover(shell));shell.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openCover(shell)}})});closeBtn.addEventListener('click',closeCover);modal.addEventListener('click',e=>{if(e.target===modal)closeCover()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeCover()})})();

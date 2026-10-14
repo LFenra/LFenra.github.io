@@ -46,6 +46,30 @@
   filter:blur(16px) brightness(.55) saturate(.9);
 }
 .kelp-intro-video.kelp-intro-finished,.prima-intro-video.prima-intro-finished { display:none; }
+
+/* The Fenraverse signpost, sitting under the two world cards. */
+.fv-band { padding: 0 0 88px; }
+.fv-band-card {
+  display:grid; grid-template-columns:1fr auto; gap:34px; align-items:center;
+  padding:34px 38px; border-radius:26px; text-decoration:none;
+  border:1px solid rgba(201,162,74,.28);
+  background:radial-gradient(760px 300px at 18% 0%,rgba(111,45,176,.22),transparent 60%),linear-gradient(135deg,rgba(23,16,41,.92),rgba(11,13,20,.96));
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.fv-band-card:hover { transform:translateY(-4px); border-color:var(--gold); box-shadow:0 22px 56px rgba(0,0,0,.34); }
+.fv-band-card:focus-visible { outline:3px solid var(--gold2); outline-offset:4px; }
+.fv-band-card h2 { margin:0 0 10px; font:500 clamp(30px,3.6vw,46px)/1.05 Georgia,"Times New Roman",serif; color:var(--gold2); }
+.fv-band-card p { margin:0 0 20px; max-width:620px; color:var(--muted); }
+.fv-band-eras { display:flex; align-items:center; gap:10px; margin-bottom:18px; flex-wrap:wrap; }
+.fv-band-eras span { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:800; letter-spacing:.1em; color:#cfc8d6; }
+.fv-band-eras i { width:9px; height:9px; border-radius:50%; display:block; }
+.fv-band-eras .line { width:24px; height:2px; border-radius:2px; background:linear-gradient(90deg,#a56bff,#2ec9bd); }
+.fv-band-eras .line2 { width:24px; height:2px; border-radius:2px; background:linear-gradient(90deg,#2ec9bd,#f6b27a); }
+.fv-band-art { flex:0 0 auto; }
+@media(max-width:860px){
+  .fv-band-card { grid-template-columns:1fr; gap:24px; padding:28px 22px; }
+  .fv-band-art { order:-1; margin:0 auto; }
+}
 .world-kelp .world-copy,.world-prima .world-copy { z-index:3; }
 .world-kelp::after,.world-prima::after { z-index:2; }
 </style>
@@ -54,7 +78,7 @@
 <header class="site-header" data-mobile-menu>
   <a class="brand" href="index.html" aria-label="L. Fenra home"><img class="brand-logo" src="site-logo.webp" alt="L. Fenra"></a>
   <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <nav class="site-nav" aria-label="Main navigation"><a class="current" href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="#series">Books</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  <nav class="site-nav" aria-label="Main navigation"><a class="current" href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="fenraverse.html">Fenraverse</a><a href="#series">Books</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
 </header>
 <main>
   <section class="page-shell home-hero">
@@ -78,6 +102,36 @@
         <source src="landing-prima-intro.mp4" type="video/mp4">
       </video>
       <div class="world-copy"><span class="world-label">FANTASY MYSTERY SERIES</span><h2>Prima Volta</h2><p>Impossible crimes, ancient magic, dangerous relics and an investigator who would prefer the evidence to behave itself.</p><span class="enter">Enter Prima Volta</span></div>
+    </a>
+  </section>
+
+  <section class="page-shell fv-band" aria-label="The Fenraverse">
+    <a class="fv-band-card" href="fenraverse.html">
+      <div>
+        <p class="eyebrow">ONE WORLD, THREE SERIES</p>
+        <h2>The Fenraverse</h2>
+        <div class="fv-band-eras">
+          <span><i style="background:#a56bff"></i>INDUSTRIAL AGE</span>
+          <i class="line" aria-hidden="true"></i>
+          <span><i style="background:#2ec9bd"></i>EARLY 1990s</span>
+          <i class="line2" aria-hidden="true"></i>
+          <span><i style="background:#f6b27a"></i>PRESENT DAY</span>
+        </div>
+        <p>Kelp Redder and Prima Volta share one world, three eras and one long story about the choices people were never given. See how the books connect, with no spoilers anywhere.</p>
+        <span class="button gold">See how it all fits together</span>
+      </div>
+      <div class="fv-band-art" aria-hidden="true">
+        <svg width="150" height="150" viewBox="0 0 186 186" fill="none">
+          <defs><linearGradient id="bandThread" x1="58" y1="58" x2="128" y2="128" gradientUnits="userSpaceOnUse"><stop stop-color="#a56bff"/><stop offset=".5" stop-color="#2ec9bd"/><stop offset="1" stop-color="#f6b27a"/></linearGradient></defs>
+          <circle cx="93" cy="93" r="84" stroke="rgba(201,162,74,.3)" stroke-width="1"/>
+          <circle cx="93" cy="93" r="60" stroke="rgba(201,162,74,.26)" stroke-width="1"/>
+          <circle cx="93" cy="93" r="47" fill="rgba(10,8,24,.6)" stroke="rgba(165,107,255,.4)" stroke-width="1.2"/>
+          <path d="M93 59a34 34 0 1 1-29 15.5" stroke="url(#bandThread)" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+          <path d="M58 61l7 14 14-6" stroke="#a56bff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="93" cy="93" r="7" fill="none" stroke="#f6d986" stroke-width="1.6"/>
+          <circle cx="93" cy="93" r="2" fill="#f6d986"/>
+        </svg>
+      </div>
     </a>
   </section>
 
@@ -113,7 +167,7 @@
     </nav>
   </section>
 </main>
-<footer style="flex-wrap:wrap"><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="#series">Books</a><a href="#about">About</a><a href="#contact">Contact</a></div></footer>
+<footer style="flex-wrap:wrap"><span>© 2026 L. Fenra</span><div class="footer-links"><a href="index.html">Home</a><a href="kelp-redder.html">Kelp Redder</a><a href="prima-volta.html">Prima Volta</a><a href="fenraverse.html">Fenraverse</a><a href="#series">Books</a><a href="#about">About</a><a href="#contact">Contact</a></div></footer>
 <script>
 (function(){const header=document.querySelector('[data-mobile-menu]');if(!header)return;const button=header.querySelector('.menu-toggle');const nav=header.querySelector('.site-nav');button.addEventListener('click',()=>{const open=header.classList.toggle('menu-open');button.setAttribute('aria-expanded',open?'true':'false')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}));document.addEventListener('click',e=>{if(!header.contains(e.target)){header.classList.remove('menu-open');button.setAttribute('aria-expanded','false')}})})();
 (function(){const video=document.querySelector('[data-kelp-intro]');if(!video)return;const card=video.closest('.world-card');const finish=()=>{video.classList.add('kelp-intro-finished');if(card)card.classList.remove('video-playing')};video.addEventListener('ended',finish,{once:true});video.addEventListener('error',finish,{once:true});const play=video.play();if(play&&typeof play.catch==='function')play.catch(finish)})();
